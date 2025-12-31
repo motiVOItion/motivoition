@@ -1,4 +1,4 @@
-# MotiVOItion - Portfolio & Blog
+# motiVOItion - Portfolio & Blog
 
 A futuristic portfolio website for showcasing motivoition services with integrated upload functionality.
 
