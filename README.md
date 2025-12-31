@@ -1,11 +1,11 @@
-# MotiVOItion - Motion Video Portfolio
+# MotiVOItion - Portfolio & Blog
 
-A futuristic portfolio website for showcasing motion video services with integrated upload functionality.
+A futuristic portfolio website for showcasing motivoition services with integrated upload functionality.
 
 ## 🌟 Features
 
 ### 🎨 Design
-- Futuristic cyberpunk aesthetic with neon accents
+- Futuristic cyberpunk aesthetic with orange accents
 - Dark theme with glowing elements
 - Animated background with particles
 - Responsive design for all devices
