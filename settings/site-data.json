@@ -1,0 +1,110 @@
+{
+    "site_info": {
+        "title": "motiVOItion",
+        "tagline": "We give the best production ever.",
+        "logo_text_1": "motiVOItion",
+        "logo_text_2": ""
+    },
+    "hero": {
+        "title": "motiVOItion Production",
+        "subtitle": "High-end visual for brands that demand excellence. Based in Ivory Coast.",
+        "cta_text": "Experience Excellence"
+    },
+    "about": {
+        "title": "AKINRINOA SAMSON OREOFE",
+        "subtitle": "motiVOItion CEO",
+        "description": "Akinrinola Samson Ore-Ofe is a creative professional and project manager based in Abidjan, C\u00f4te d'Ivoire. He is a 35 year old Nigerian national with a wide range of technical and creative skills developed over more than fifteen years of professional experience.\r\n\r\nSamson possesses high proficiency in several technical areas:\r\n\r\nDesign and Graphics: He is skilled in Adobe Photoshop, Illustrator, InDesign, and XD for UX\/UI design. He also has experience with LaserGRBL for laser cutting and engraving.\r\n\r\nVideo and Audio: He is an expert in video editing using tools like DaVinci Resolve, Capcut, and Filmora. His audio skills include sound arrangement and editing with iZotope RX and Adobe Audition.\r\n\r\nBusiness and Management: He has strong capabilities in strategic planning, market research, budgeting, and business development.\r\n\r\nSamson is multilingual, speaking Yor\u00f9b\u00e1 and English fluently, with intermediate skills in French. He describes himself as a loyal, creative, and collaborative professional who is dedicated to constant learning and helping others through teaching and training. In his free time, he enjoys music, cinema, sports, and tourism.",
+        "photo_url": "assets\/images\/profile.JPG"
+    },
+    "contact": {
+        "email": "motivoition@gmail.com",
+        "phone": "+225 05 55 95 38 10",
+        "address": "Abidjan C\u00f4te d'Ivoire"
+    },
+    "services": {
+        "list": [
+            {
+                "title": "Professional Video Production",
+                "id": "production",
+                "description": "End-to-end video production services from concept development to final delivery. We handle everything from scripting to shooting and final edits.",
+                "price": "Starting from 200.000 FCFA",
+                "price_note": "Custom quotes based on project scope"
+            },
+            {
+                "title": "Advanced Video Editing",
+                "id": "editing",
+                "description": "Professional post-production services including editing, color grading, sound design, and visual effects to elevate your raw footage.",
+                "price": "10.000 FCFA \/hour",
+                "price_note": "Package discounts available"
+            },
+            {
+                "title": "Motion Graphics & Animation",
+                "id": "motion-graphics",
+                "description": "Create stunning animated graphics, explainer videos, and visual effects that captivate your audience and enhance brand storytelling.",
+                "price": "Starting from 400.000 FCFA",
+                "price_note": "Per project basis"
+            },
+            {
+                "title": "Cloud Video Upload System",
+                "id": "upload",
+                "description": "Our proprietary upload system allows direct integration with GitHub for seamless video management, sharing, and collaboration.",
+                "price": "20.000 FCFFA \/month",
+                "price_note": "Enterprise plans available"
+            },
+            {
+                "title": "Video SEO & Distribution",
+                "id": "seo",
+                "description": "Maximize your video's reach with strategic SEO optimization and multi-platform distribution to YouTube, Vimeo, and social media.",
+                "price": "70.000 FCFA \/month",
+                "price_note": "Management service"
+            },
+            {
+                "title": "Video Production Training",
+                "id": "training",
+                "description": "Learn professional video production techniques through personalized training sessions and comprehensive workshops.",
+                "price": "20.000 FCFA \/session",
+                "price_note": "Group rates available"
+            }
+        ],
+        "packages": [
+            {
+                "name": "Starter Package",
+                "id": "starter",
+                "price": "150.000 FCFA",
+                "period": "Per Project",
+                "features": [
+                    "1 Minute Video",
+                    "Basic Editing",
+                    "Music Licensing",
+                    " Social Media Monetization"
+                ]
+            },
+            {
+                "name": "Professional Package",
+                "id": "professional",
+                "price": "250.000 FCFA",
+                "period": "Per Project Including Social Media",
+                "features": [
+                    "5-10 Minute Video",
+                    "Advanced Editing",
+                    "Voiceover",
+                    " Social Media Monetization",
+                    "4K Delivery"
+                ]
+            },
+            {
+                "name": "Enterprise Package",
+                "id": "enterprise",
+                "price": "Custom",
+                "period": "Monthly",
+                "features": [
+                    "Full Brand Story",
+                    "Social Ads",
+                    "SEO Strategy",
+                    "Priority Support",
+                    "Unlimited Revisions"
+                ]
+            }
+        ]
+    }
+}

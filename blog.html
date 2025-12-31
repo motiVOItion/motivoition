@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | MotiVOItion - Motion Video Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B00;
+            --secondary: #FFB347;
+            --accent: #FDFD96;
+            --dark: #1B1B1B;
+            --card-bg: rgba(30, 30, 30, 0.8);
+        }
+
+        .blog-page {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .blog-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .blog-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blog-hero p {
+            font-size: 1.2rem;
+            color: #B0B0B0;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .blog-search {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            padding-left: 3rem;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+        }
+
+        .blog-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 6rem;
+        }
+
+        .blog-main {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Blog Post Card */
+        .blog-post {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 107, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow:
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(255, 107, 0, 0.2);
+        }
+
+        .post-image {
+            width: 100%;
+            height: var(--grid-item-height);
+            object-fit: cover;
+            display: block;
+        }
+
+        .post-content {
+            padding: 2rem;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #8888a0;
+            font-size: 0.8rem;
+        }
+
+        .post-category {
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .post-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .post-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: white;
+            line-height: 1.3;
+        }
+
+        .post-excerpt {
+            color: #B0B0B0;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-tag {
+            background: rgba(255, 255, 255, 0.05);
+            color: #b0b0c0;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .post-tag:hover {
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--primary);
+        }
+
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 107, 0, 0.1);
+        }
+
+        .post-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .author-info h4 {
+            font-size: 0.95rem;
+            color: white;
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: #8888a0;
+        }
+
+        .read-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #8888a0;
+            font-size: 0.9rem;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 1rem;
+            color: white;
+        }
+
+        /* Blog Sidebar */
+        .blog-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-widget {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 107, 0, 0.1);
+        }
+
+        .widget-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 107, 0, 0.1);
+        }
+
+        /* Categories Widget */
+        .categories-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .category-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            border-radius: 10px;
+            color: #b0b0c0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .category-item:hover {
+            background: rgba(255, 107, 0, 0.05);
+            color: var(--primary);
+        }
+
+        .category-count {
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        /* Recent Posts Widget */
+        .recent-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .recent-post {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .recent-post:hover {
+            background: rgba(255, 107, 0, 0.05);
+        }
+
+        .recent-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .recent-content {
+            flex: 1;
+        }
+
+        .recent-title {
+            font-size: 0.95rem;
+            color: white;
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+        }
+
+        .recent-date {
+            font-size: 0.85rem;
+            color: #8888a0;
+        }
+
+        /* Tags Widget */
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag-link {
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tag-link:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        /* Newsletter Widget */
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .newsletter-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            color: white;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .newsletter-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 107, 0, 0.3);
+        }
+
+        /* Featured Post */
+        .featured-post {
+            grid-column: 1 / -1;
+            margin-bottom: 2rem;
+        }
+
+        .featured-post .post-image {
+            height: 250px;
+        }
+
+        .featured-post .post-title {
+            font-size: 2.2rem;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 4rem;
+        }
+
+        .page-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 107, 0, 0.1);
+            border-radius: 8px;
+            color: #b0b0c0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .page-link:hover,
+        .page-link.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: transparent;
+        }
+
+        .page-link.prev,
+        .page-link.next {
+            width: auto;
+            padding: 0 1rem;
+            gap: 0.5rem;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 4rem;
+            grid-column: 1 / -1;
+        }
+
+        .no-results i {
+            font-size: 4rem;
+            color: rgba(255, 107, 0, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 992px) {
+            .blog-content {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-post {
+                grid-column: 1;
+            }
+
+            .blog-post {
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .post-footer {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .featured-post .post-image {
+                height: 250px;
+            }
+
+            .featured-post .post-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="dark-mode">
+    <!-- Animated Background -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="assets/images/logo%202.svg" alt="MotiVOItion Logo" style="width: 40px; height: 40px;">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-motion">MOTI</span>
+                    <span class="logo-voition">VOITION</span>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link" data-text="HOME">
+                            <i class="fas fa-home"></i>
+                            <span>HOME</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link" data-text="ABOUT">
+                            <i class="fas fa-user-astronaut"></i>
+                            <span>ABOUT</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="services.html" class="nav-link" data-text="SERVICES">
+                            <i class="fas fa-cogs"></i>
+                            <span>SERVICES</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="portfolio.html" class="nav-link" data-text="PORTFOLIO">
+                            <i class="fas fa-film"></i>
+                            <span>PORTFOLIO</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link" data-text="CONTACT">
+                            <i class="fas fa-satellite-dish"></i>
+                            <span>CONTACT</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html" class="nav-link active" data-text="BLOG">
+                            <i class="fas fa-blog"></i>
+                            <span>BLOG</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" id="menuToggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Blog Page Content -->
+    <section class="blog-page">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="blog-hero">
+                <h1>MotiVOItion Blog</h1>
+                <p>Insights, tutorials, and inspiration for motion video creators. Stay updated with the latest trends
+                    and techniques.</p>
+
+                <div class="blog-search">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" id="blogSearch"
+                            placeholder="Search articles, tutorials, tips...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Content -->
+            <div class="blog-content">
+                <!-- Blog Posts -->
+                <div class="blog-main" id="blogGrid">
+                    <div class="loader">Loading latest articles...</div>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="blog-sidebar">
+                    <!-- Categories Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Categories</h3>
+                        <div class="categories-list">
+                            <a href="#" class="category-item" data-category="all">
+                                <span>All Articles</span>
+                                <span class="category-count">24</span>
+                            </a>
+                            <a href="#" class="category-item" data-category="tutorial">
+                                <span>Tutorials</span>
+                                <span class="category-count">8</span>
+                            </a>
+                            <a href="#" class="category-item" data-category="gear">
+                                <span>Gear Reviews</span>
+                                <span class="category-count">5</span>
+                            </a>
+                            <a href="#" class="category-item" data-category="business">
+                                <span>Business Tips</span>
+                                <span class="category-count">6</span>
+                            </a>
+                            <a href="#" class="category-item" data-category="trends">
+                                <span>Industry Trends</span>
+                                <span class="category-count">3</span>
+                            </a>
+                            <a href="#" class="category-item" data-category="case-studies">
+                                <span>Case Studies</span>
+                                <span class="category-count">2</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Recent Posts Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Recent Posts</h3>
+                        <div class="recent-posts">
+                            <a href="#" class="recent-post">
+                                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                    alt="Recent Post" class="recent-image">
+                                <div class="recent-content">
+                                    <h4 class="recent-title">Advanced Lighting Techniques</h4>
+                                    <p class="recent-date">March 14, 2024</p>
+                                </div>
+                            </a>
+
+                            <a href="#" class="recent-post">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                    alt="Recent Post" class="recent-image">
+                                <div class="recent-content">
+                                    <h4 class="recent-title">Client Communication Best Practices</h4>
+                                    <p class="recent-date">March 11, 2024</p>
+                                </div>
+                            </a>
+
+                            <a href="#" class="recent-post">
+                                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                                    alt="Recent Post" class="recent-image">
+                                <div class="recent-content">
+                                    <h4 class="recent-title">Sound Design Fundamentals</h4>
+                                    <p class="recent-date">March 7, 2024</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tags Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Popular Tags</h3>
+                        <div class="tags-cloud">
+                            <a href="#" class="tag-link" data-tag="tutorial">Tutorial</a>
+                            <a href="#" class="tag-link" data-tag="editing">Editing</a>
+                            <a href="#" class="tag-link" data-tag="color-grading">Color Grading</a>
+                            <a href="#" class="tag-link" data-tag="motion-graphics">Motion Graphics</a>
+                            <a href="#" class="tag-link" data-tag="camera">Camera</a>
+                            <a href="#" class="tag-link" data-tag="lighting">Lighting</a>
+                            <a href="#" class="tag-link" data-tag="business">Business</a>
+                            <a href="#" class="tag-link" data-tag="freelancing">Freelancing</a>
+                            <a href="#" class="tag-link" data-tag="tips">Tips</a>
+                            <a href="#" class="tag-link" data-tag="workflow">Workflow</a>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Subscribe to Newsletter</h3>
+                        <p style="color: #b0b0c0; margin-bottom: 1rem; font-size: 0.95rem;">
+                            Get the latest tutorials, gear reviews, and industry insights delivered to your inbox.
+                        </p>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                            <button type="submit" class="newsletter-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Social Media Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Follow Us</h3>
+                        <div class="social-widget">
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem;">
+                                <a href="https://www.youtube.com/@motivoition" target="_blank" class="social-card"
+                                    style="text-align: center; padding: 1rem;">
+                                    <div style="color: #FF0000; font-size: 1.5rem;">
+                                        <i class="fab fa-youtube"></i>
+                                    </div>
+                                    <div style="font-size: 0.85rem; color: #b0b0c0; margin-top: 0.5rem;">YouTube</div>
+                                </a>
+
+                                <a href="https://www.instagram.com/motivoition" target="_blank" class="social-card"
+                                    style="text-align: center; padding: 1rem;">
+                                    <div style="color: #E1306C; font-size: 1.5rem;">
+                                        <i class="fab fa-instagram"></i>
+                                    </div>
+                                    <div style="font-size: 0.85rem; color: #b0b0c0; margin-top: 0.5rem;">Instagram</div>
+                                </a>
+
+                                <a href="https://twitter.com/motivoition" target="_blank" class="social-card"
+                                    style="text-align: center; padding: 1rem;">
+                                    <div style="color: #1DA1F2; font-size: 1.5rem;">
+                                        <i class="fab fa-twitter"></i>
+                                    </div>
+                                    <div style="font-size: 0.85rem; color: #b0b0c0; margin-top: 0.5rem;">Twitter</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="page-link prev">
+                    <i class="fas fa-chevron-left"></i>
+                    Previous
+                </a>
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link">4</a>
+                <a href="#" class="page-link next">
+                    Next
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+
+            <!-- Newsletter Section -->
+            <div class="cta-section"
+                style="background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(157, 78, 221, 0.1)); border: 1px solid rgba(0, 243, 255, 0.2); border-radius: 20px; padding: 4rem; text-align: center; margin: 6rem 0;">
+                <h2
+                    style="font-family: 'Orbitron', sans-serif; font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                    Never Miss an Update
+                </h2>
+                <p style="font-size: 1.1rem; color: #b0b0c0; max-width: 600px; margin: 0 auto 2rem;">
+                    Join 5,000+ motion video creators who receive our weekly newsletter with exclusive tutorials,
+                    industry news, and creative inspiration.
+                </p>
+                <form style="max-width: 500px; margin: 0 auto; display: flex; gap: 1rem;">
+                    <input type="email" placeholder="Enter your email"
+                        style="flex: 1; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(0, 243, 255, 0.2); border-radius: 10px; color: white; font-family: 'Exo 2', sans-serif;">
+                    <button type="submit"
+                        style="background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border: none; border-radius: 10px; padding: 1rem 2rem; font-family: 'Orbitron', sans-serif; font-weight: 600; cursor: pointer;">
+                        Subscribe
+                    </button>
+                </form>
+                <p style="font-size: 0.9rem; color: #8888a0; margin-top: 1rem;">
+                    No spam. Unsubscribe anytime.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-motion">MOTI</span>
+                        <span class="logo-voition">VOITION</span>
+                    </div>
+                    <p class="footer-tagline" id="dynamic-footer-tagline">
+                        Where motion meets emotion in every frame.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>

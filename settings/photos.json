@@ -1,0 +1,98 @@
+[
+    {
+        "id": "aims-comm-note",
+        "title": "AIMS Communication Note",
+        "description": "",
+        "category": "design",
+        "tags": [
+            "design",
+            "communication"
+        ],
+        "date": "2025-01-01",
+        "src": "assets/images/portfolio/AIMS Communication Note-2.jpg",
+        "thumbnail": "assets/images/portfolio/AIMS Communication Note-2.jpg",
+        "dimensions": "Original"
+    },
+    {
+        "id": "anniv-anne",
+        "title": "Anniversaire de Anne",
+        "description": "",
+        "category": "design",
+        "tags": [
+            "design",
+            "event"
+        ],
+        "date": "2025-01-01",
+        "src": "assets/images/portfolio/Anniversaire de Anne.jpg",
+        "thumbnail": "assets/images/portfolio/Anniversaire de Anne.jpg",
+        "dimensions": "Original"
+    },
+    {
+        "id": "couverture-aes",
+        "title": "Couverture AES",
+        "description": "",
+        "category": "design",
+        "tags": [
+            "design",
+            "cover"
+        ],
+        "date": "2025-01-01",
+        "src": "assets/images/portfolio/COUVERTURE AES.jpg",
+        "thumbnail": "assets/images/portfolio/COUVERTURE AES.jpg",
+        "dimensions": "Original"
+    },
+    {
+        "id": "harvest",
+        "title": "Harvest",
+        "description": "",
+        "category": "design",
+        "tags": [
+            "design"
+        ],
+        "date": "2025-01-01",
+        "src": "assets/images/portfolio/HARVET.jpg",
+        "thumbnail": "assets/images/portfolio/HARVET.jpg",
+        "dimensions": "Original"
+    },
+    {
+        "id": "wedding-cover",
+        "title": "Wedding Cover Design",
+        "description": "",
+        "category": "design",
+        "tags": [
+            "design",
+            "wedding"
+        ],
+        "date": "2025-01-01",
+        "src": "assets/images/portfolio/Wedding Cover Design Nikky and Solomon.jpg",
+        "thumbnail": "assets/images/portfolio/Wedding Cover Design Nikky and Solomon.jpg",
+        "dimensions": "Original"
+    },
+    {
+        "id": "ok-img",
+        "title": "Design OK",
+        "description": "",
+        "category": "design",
+        "tags": [
+            "design"
+        ],
+        "date": "2025-01-01",
+        "src": "assets/images/portfolio/ok.jpg",
+        "thumbnail": "assets/images/portfolio/ok.jpg",
+        "dimensions": "Original"
+    },
+    {
+        "id": "orion-soap-1",
+        "title": "Orion Soap Carton",
+        "description": "",
+        "category": "product",
+        "tags": [
+            "product",
+            "packaging"
+        ],
+        "date": "2025-01-01",
+        "src": "assets/images/portfolio/orion-soap-carton--1767096500.jpg",
+        "thumbnail": "assets/images/portfolio/orion-soap-carton--1767096500.jpg",
+        "dimensions": "Original"
+    }
+]

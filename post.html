@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post | MotiVOItion</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        .post-hero {
+            height: 60vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 4rem;
+        }
+
+        .post-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .post-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--dark));
+            z-index: 0;
+        }
+
+        .post-header {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .post-body {
+            max-width: 900px;
+            margin: -4rem auto 6rem;
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 107, 0, 0.1);
+            position: relative;
+            z-index: 2;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+
+        .post-body h2,
+        .post-body h3 {
+            color: white;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-body p {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body class="dark-mode">
+    <div class="particles-container" id="particles"></div>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <span class="logo-motion">MOTI</span>
+                    <span class="logo-voition">VOITION</span>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">HOME</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link">BLOG</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="post-container">
+        <!-- Content will be loaded here -->
+        <div style="height: 100vh; display: flex; align-items: center; justify-content: center;">
+            <div class="loader">Loading post...</div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 MotiVOItion. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            if (!id) {
+                window.location.href = 'blog.html';
+                return;
+            }
+
+            try {
+                const response = await fetch('settings/blogs.json');
+                const blogs = await response.json();
+                const post = blogs.find(b => b.id === id);
+
+                if (!post) {
+                    document.getElementById('post-container').innerHTML = '<div class="container" style="padding: 100px 0; text-align: center;"><h1>Post not found</h1><a href="blog.html" class="btn-primary">Back to Blog</a></div>';
+                    return;
+                }
+
+                document.title = post.title + ' | MotiVOItion';
+
+                const html = `
+                    <div class="post-hero">
+                        <div class="post-hero-bg" style="background-image: url('${post.image_url.startsWith('http') ? post.image_url : post.image_url}')"></div>
+                        <div class="post-hero-overlay"></div>
+                        <div class="container">
+                            <div class="post-header">
+                                <span class="post-category">${post.category}</span>
+                                <h1 style="font-size: 3.5rem; color: white; margin: 1rem 0;">${post.title}</h1>
+                                <div class="post-meta">
+                                    <span><i class="far fa-calendar"></i> ${post.date}</span>
+                                    <span><i class="far fa-clock"></i> ${post.read_time}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <article class="post-body">
+                            ${post.content}
+                            <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                                <div class="post-tags">
+                                    ${post.tags.map(tag => `<span class="post-tag">#${tag}</span>`).join('')}
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                `;
+                document.getElementById('post-container').innerHTML = html;
+            } catch (error) {
+                console.error('Error loading post:', error);
+            }
+        });
+    </script>
+</body>
+
+</html>

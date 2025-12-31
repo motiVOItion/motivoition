@@ -1,0 +1,133 @@
+[
+    {
+        "id": "future-motion-graphics",
+        "title": "The Future of Motion Graphics: AI Integration & Real-time Rendering",
+        "excerpt": "Discover how artificial intelligence is revolutionizing motion graphics creation. From automated animation to real-time rendering engines, explore the cutting-edge technologies that are shaping the future of visual storytelling.",
+        "content": "Full article content goes here...",
+        "category": "Trends",
+        "date": "2025-01-01",
+        "read_time": "8 min read",
+        "image_url": "assets/images/blog/future-motion-graphics.jpg",
+        "author": "Alex Motion",
+        "author_avatar": "assets/images/placeholder.jpg",
+        "author_role": "Creative Director",
+        "tags": [
+            "MotionGraphics",
+            "AI",
+            "Trends"
+        ]
+    },
+    {
+        "id": "gratitude-journal",
+        "title": "Designing for Mindfulness: The Gratitude Journal",
+        "excerpt": "A deep dive into the creative process behind the Gratitude Journal cover. We explore color psychology, typography choices, and how print finishes contribute to the overall user experience of mindfulness.",
+        "content": "Full article content goes here...",
+        "category": "Design",
+        "date": "2025-01-01",
+        "read_time": "5 min read",
+        "image_url": "assets/images/blog/GRATITUDE JOURNAL COVER PAGE.jpg",
+        "author": "Marcel K.",
+        "author_avatar": "assets/images/placeholder.jpg",
+        "author_role": "Designer",
+        "tags": [
+            "Design",
+            "Print",
+            "Cover",
+            "Mindfulness"
+        ]
+    },
+    {
+        "id": "ketoiles-cosmetiques",
+        "title": "K'étoile Cosmetiques: Crafting a Luxury Brand Identity",
+        "excerpt": "See how we built the visual identity for K'étoile Cosmetiques from the ground up. This case study covers logo development, packaging design, and defining a brand voice that resonates with elegance.",
+        "content": "Full article content goes here...",
+        "category": "Branding",
+        "date": "2025-01-01",
+        "read_time": "6 min read",
+        "image_url": "assets/images/blog/K'étoile Cosmetiques.jpg",
+        "author": "Marcel K.",
+        "author_avatar": "assets/images/placeholder.jpg",
+        "author_role": "Brand Strategist",
+        "tags": [
+            "Branding",
+            "Logo",
+            "Cosmetics",
+            "Luxury"
+        ]
+    },
+    {
+        "id": "moonlight-sunday",
+        "title": "Moonlight Sunday: Event Typography & Composition",
+        "excerpt": "Breaking down the 'Moonlight Sunday' flyer design. Learn how effective hierarchy and bold typography can capture the spiritual and energetic essence of a live event.",
+        "content": "Full article content goes here...",
+        "category": "Events",
+        "date": "2025-01-01",
+        "read_time": "4 min read",
+        "image_url": "assets/images/blog/Moonlight sunday - Jesus the safe keeper FR.jpg",
+        "author": "Marcel K.",
+        "author_avatar": "assets/images/placeholder.jpg",
+        "author_role": "Graphic Designer",
+        "tags": [
+            "Event",
+            "Flyer",
+            "Typography",
+            "Gospel"
+        ]
+    },
+    {
+        "id": "log-book-cover",
+        "title": "Functional Design: My Browser Log Book",
+        "excerpt": "Design isn't just about aesthetics; it's about function. This post discusses the layout and cover design for the 'Browser Log Book', focusing on usability and clarity for security professionals.",
+        "content": "Full article content goes here...",
+        "category": "Design",
+        "date": "2025-01-01",
+        "read_time": "5 min read",
+        "image_url": "assets/images/blog/My Browser Log Book COVER.jpg",
+        "author": "Marcel K.",
+        "author_avatar": "assets/images/placeholder.jpg",
+        "author_role": "Designer",
+        "tags": [
+            "Design",
+            "Print",
+            "Utility",
+            "Security"
+        ]
+    },
+    {
+        "id": "ivoire-chat",
+        "title": "Building Connection: Ivoire Chat Coming Soon",
+        "excerpt": "We are excited to announce the upcoming launch of Ivoire Chat. Here's a sneak peek at the interface design and the core features aimed at seamless communication.",
+        "content": "Full article content goes here...",
+        "category": "App",
+        "date": "2025-01-01",
+        "read_time": "3 min read",
+        "image_url": "assets/images/blog/ivoire-chat-coming-soon.jpg",
+        "author": "Marcel K.",
+        "author_avatar": "assets/images/placeholder.jpg",
+        "author_role": "Developer",
+        "tags": [
+            "App",
+            "Chat",
+            "Launch",
+            "UI/UX"
+        ]
+    },
+    {
+        "id": "untitled-art",
+        "title": "Exploring Abstraction in Digital Media",
+        "excerpt": "A showcase of recent experimental digital art. This piece explores the interplay of light, shadow, and geometry to create evocative abstract forms.",
+        "content": "Full article content goes here...",
+        "category": "Art",
+        "date": "2025-01-01",
+        "read_time": "3 min read",
+        "image_url": "assets/images/blog/Untitled.jpg",
+        "author": "Marcel K.",
+        "author_avatar": "assets/images/placeholder.jpg",
+        "author_role": "Digital Artist",
+        "tags": [
+            "Art",
+            "Abstract",
+            "Digital"
+        ]
+    }
+]

@@ -1,0 +1,108 @@
+[
+    {
+        "id": 1,
+        "title": "Art Outing",
+        "description": "",
+        "category": "motion",
+        "tags": [
+            "motion",
+            "art",
+            "outing"
+        ],
+        "date": "2025-01-01",
+        "src": "assets/videos/Art Outing.mp4",
+        "thumbnail": "assets/images/video-placeholder.png",
+        "size": "244 MB",
+        "duration": ""
+    },
+    {
+        "id": 2,
+        "title": "Ifarce Road Show",
+        "description": "",
+        "category": "motion",
+        "tags": [
+            "motion",
+            "road-show"
+        ],
+        "date": "2025-01-01",
+        "src": "assets/videos/Ifarce Road Show.mp4",
+        "thumbnail": "assets/images/video-placeholder.png",
+        "size": "136 MB",
+        "duration": ""
+    },
+    {
+        "id": 3,
+        "title": "Market Show",
+        "description": "",
+        "category": "motion",
+        "tags": [
+            "motion",
+            "market"
+        ],
+        "date": "2025-01-01",
+        "src": "assets/videos/Market Show.mp4",
+        "thumbnail": "assets/images/video-placeholder.png",
+        "size": "195 MB",
+        "duration": ""
+    },
+    {
+        "id": 4,
+        "title": "Me and my drone",
+        "description": "",
+        "category": "cinematic",
+        "tags": [
+            "drone",
+            "cinematic"
+        ],
+        "date": "2025-01-01",
+        "src": "assets/videos/Me and my drone.mp4",
+        "thumbnail": "assets/images/video-placeholder.png",
+        "size": "117 MB",
+        "duration": ""
+    },
+    {
+        "id": 5,
+        "title": "Rencontre",
+        "description": "",
+        "category": "motion",
+        "tags": [
+            "motion",
+            "meeting"
+        ],
+        "date": "2025-01-01",
+        "src": "assets/videos/Rencontre.mp4",
+        "thumbnail": "assets/images/video-placeholder.png",
+        "size": "123 MB",
+        "duration": ""
+    },
+    {
+        "id": 6,
+        "title": "UFHB Drone",
+        "description": "",
+        "category": "cinematic",
+        "tags": [
+            "drone",
+            "university"
+        ],
+        "date": "2025-01-01",
+        "src": "assets/videos/UFHB Drone.mp4",
+        "thumbnail": "assets/images/video-placeholder.png",
+        "size": "322 MB",
+        "duration": ""
+    },
+    {
+        "id": 7,
+        "title": "Mes Réalisations - Akinrinola Samson",
+        "description": "",
+        "category": "showcase",
+        "tags": [
+            "showcase",
+            "portfolio"
+        ],
+        "date": "2025-01-01",
+        "src": "assets/videos/Mes Realisation (Impression numerique et Offset et aussi Videographie) - Akinrinola Samson (720p, h264).mp4",
+        "thumbnail": "assets/images/placeholder.jpg",
+        "size": "61 MB",
+        "duration": ""
+    }
+]

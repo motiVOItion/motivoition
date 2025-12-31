@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Cinematic Color Grading | MotiVOItion Blog</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Copy the same styles from blog-post-future-motion-graphics.html */
+        :root {
+            --primary: #00f3ff;
+            --secondary: #ff00ff;
+            --accent: #9d4edd;
+            --dark: #0a0a0f;
+            --card-bg: rgba(20, 20, 30, 0.8);
+        }
+
+        .blog-post-page {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .post-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 0 2rem;
+        }
+
+        .post-category {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .post-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            color: #b0b0c0;
+            font-size: 1rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .post-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 6rem;
+        }
+
+        /* ... Rest of the styles from previous post ... */
+
+        /* Color grading specific styles */
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            margin: 2rem 0;
+        }
+
+        .color-swatch {
+            height: 60px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .image-comparison {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .image-comparison img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .comparison-label {
+            position: absolute;
+            top: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .before .comparison-label {
+            left: 1rem;
+            border-left: 3px solid #ff4444;
+        }
+
+        .after .comparison-label {
+            right: 1rem;
+            border-left: 3px solid #44ff44;
+        }
+
+        @media (max-width: 768px) {
+            .before-after {
+                grid-template-columns: 1fr;
+            }
+
+            .color-palette {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body class="dark-mode">
+    <!-- Animated Background -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="../assets/images/logo%202.svg" alt="MotiVOItion Logo" style="width: 40px; height: 40px;">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-motion">MOTI</span>
+                    <span class="logo-voition">VOITION</span>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link" data-text="HOME">
+                            <i class="fas fa-home"></i>
+                            <span>HOME</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../about.html" class="nav-link" data-text="ABOUT">
+                            <i class="fas fa-user-astronaut"></i>
+                            <span>ABOUT</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../services.html" class="nav-link" data-text="SERVICES">
+                            <i class="fas fa-cogs"></i>
+                            <span>SERVICES</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../portfolio.html" class="nav-link" data-text="PORTFOLIO">
+                            <i class="fas fa-film"></i>
+                            <span>PORTFOLIO</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../upload.html" class="nav-link upload-btn" data-text="UPLOAD">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>UPLOAD</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../contact.html" class="nav-link" data-text="CONTACT">
+                            <i class="fas fa-satellite-dish"></i>
+                            <span>CONTACT</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../blog.html" class="nav-link active" data-text="BLOG">
+                            <i class="fas fa-blog"></i>
+                            <span>BLOG</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" id="menuToggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Blog Post Content -->
+    <section class="blog-post-page">
+        <div class="container">
+            <!-- Post Header -->
+            <div class="post-header">
+                <span class="post-category">Tutorial</span>
+                <h1 class="post-title">Mastering Cinematic Color Grading in DaVinci Resolve</h1>
+
+                <div class="post-meta">
+                    <div class="meta-item">
+                        <i class="far fa-calendar"></i>
+                        <span>March 12, 2024</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="far fa-clock"></i>
+                        <span>12 min read</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-eye"></i>
+                        <span>2,845 views</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Image -->
+            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                alt="Color Grading Workspace" class="featured-image">
+            <p class="image-caption">Professional color grading setup in DaVinci Resolve Studio</p>
+
+            <!-- Post Content -->
+            <div class="post-content">
+                <p>Color grading is the secret sauce that transforms good footage into cinematic masterpieces. In
+                    DaVinci Resolve, you have access to Hollywood-grade color tools that can elevate your videos from
+                    amateur to professional. This comprehensive guide will walk you through the entire process, from
+                    basic correction to advanced looks.</p>
+
+                <div class="highlight-box">
+                    <h4><i class="fas fa-palette"></i> What You'll Learn:</h4>
+                    <ul>
+                        <li>Proper color management workflow</li>
+                        <li>Primary vs. secondary correction techniques</li>
+                        <li>Creating custom LUTs (Look-Up Tables)</li>
+                        <li>Skin tone correction and isolation</li>
+                        <li>Exporting for different platforms</li>
+                    </ul>
+                </div>
+
+                <h2>The Color Grading Workflow</h2>
+
+                <p>A systematic approach to color grading ensures consistent, professional results every time. Follow
+                    this workflow for optimal results:</p>
+
+                <h3>1. Color Management & Input Settings</h3>
+
+                <p>Start by setting up your project correctly. Go to Project Settings > Color Management and choose your
+                    color science (Davinci YRGB or ACES). Set your timeline color space to Rec.709-A for most projects,
+                    and output color space to Rec.709 for standard delivery.</p>
+
+                <pre><code>// Example: Basic color management settings
+{
+    "color_science": "DaVinci YRGB",
+    "timeline_color_space": "Rec.709-A",
+    "output_color_space": "Rec.709",
+    "lut_input": "None",
+    "lut_output": "None"
+}</code></pre>
+
+                <h3>2. Primary Color Correction</h3>
+
+                <p>Primary correction fixes exposure, white balance, and contrast before creative grading. Use the Color
+                    Wheels panel to:</p>
+
+                <ul>
+                    <li><strong>Lift:</strong> Adjusts the black levels</li>
+                    <li><strong>Gamma:</strong> Controls mid-tones</li>
+                    <li><strong>Gain:</strong> Adjusts highlights</li>
+                    <li><strong>Offset:</strong> Overall brightness adjustment</li>
+                </ul>
+
+                <div class="before-after">
+                    <div class="image-comparison before">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            alt="Before Correction">
+                        <div class="comparison-label">Before: Flat LOG footage</div>
+                    </div>
+                    <div class="image-comparison after">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80&brightness=1.2&contrast=1.1"
+                            alt="After Correction">
+                        <div class="comparison-label">After: Corrected exposure</div>
+                    </div>
+                </div>
+
+                <h3>3. Understanding Color Theory</h3>
+
+                <p>Effective color grading relies on understanding color theory principles. The color wheel is your most
+                    important tool:</p>
+
+                <div class="color-palette">
+                    <div class="color-swatch" style="background: #264653;">Teal</div>
+                    <div class="color-swatch" style="background: #2a9d8f;">Green</div>
+                    <div class="color-swatch" style="background: #e9c46a;">Yellow</div>
+                    <div class="color-swatch" style="background: #f4a261;">Orange</div>
+                    <div class="color-swatch" style="background: #e76f51;">Red</div>
+                </div>
+
+                <p><strong>Complementary Colors:</strong> Colors opposite each other on the wheel create visual tension
+                    and interest. The classic teal and orange look uses this principle.</p>
+
+                <p><strong>Analogous Colors:</strong> Colors next to each other create harmony and are perfect for
+                    establishing mood.</p>
+
+                <h2>Creating Cinematic Looks</h2>
+
+                <p>Let's explore three popular cinematic looks and how to achieve them in DaVinci Resolve:</p>
+
+                <h3>The Blockbuster Look (Teal & Orange)</h3>
+
+                <p>This classic Hollywood look creates separation between characters (warm skin tones) and backgrounds
+                    (cool environments).</p>
+
+                <pre><code>// Node structure for Teal & Orange look
+[Primary Correction] → [Curves Adjustment] → [Qualifier for Skin] → [Power Windows] → [Film Grain]
+
+// Key settings:
+- Push shadows toward teal
+- Keep skin tones in orange range
+- Add subtle blue to highlights
+- Use curves for contrast
+- Add 35mm film grain texture</code></pre>
+
+                <h3>The Moody Thriller Look</h3>
+
+                <p>Dark, desaturated colors with high contrast create tension and mystery:</p>
+
+                <div class="highlight-box">
+                    <h4><i class="fas fa-cloud-moon"></i> Moody Look Recipe:</h4>
+                    <ul>
+                        <li>Reduce overall saturation by 30%</li>
+                        <li>Crush blacks slightly</li>
+                        <li>Add blue tint to shadows</li>
+                        <li>Isolate and desaturate specific colors</li>
+                        <li>Add vignette for focus</li>
+                    </ul>
+                </div>
+
+                <h3>The Vintage Film Look</h3>
+
+                <p>Simulate the characteristics of classic film stocks with these techniques:</p>
+
+                <ul>
+                    <li><strong>Film LUTs:</strong> Use built-in film emulation LUTs</li>
+                    <li><strong>Grain:</strong> Add realistic 16mm or 35mm grain</li>
+                    <li><strong>Halation:</strong> Create subtle red glow around highlights</li>
+                    <li><strong>Gate Weave:</strong> Add slight vertical/horizontal movement</li>
+                    <li><strong>Soft Focus:</strong> Reduce sharpness slightly</li>
+                </ul>
+
+                <h2>Advanced Techniques</h2>
+
+                <h3>Qualifiers & Power Windows</h3>
+
+                <p>DaVinci Resolve's qualifiers let you isolate and adjust specific colors. Power windows allow you to
+                    grade specific areas of the frame.</p>
+
+                <blockquote>
+                    "The magic of color grading happens in the subtle adjustments. It's not about making big, obvious
+                    changes, but about guiding the viewer's eye and creating emotional impact."
+                    <cite>— Alex Motion, Creative Director</cite>
+                </blockquote>
+
+                <h3>Working with LUTs</h3>
+
+                <p>LUTs (Look-Up Tables) can be incredibly useful, but they're often misunderstood. Here's how to use
+                    them properly:</p>
+
+                <ol>
+                    <li><strong>Input LUTs:</strong> Convert LOG footage to Rec.709</li>
+                    <li><strong>Creative LUTs:</strong> Apply after primary correction</li>
+                    <li><strong>Output LUTs:</strong> Convert to final delivery format</li>
+                </ol>
+
+                <h2>Common Mistakes to Avoid</h2>
+
+                <p>Even experienced colorists make these mistakes. Here's how to avoid them:</p>
+
+                <div class="highlight-box">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Color Grading Pitfalls:</h4>
+                    <ul>
+                        <li><strong>Over-saturation:</strong> Colors become unnatural and distracting</li>
+                        <li><strong>Crushed blacks:</strong> Losing shadow detail completely</li>
+                        <li><strong>Inconsistent skin tones:</strong> Characters look sick or unnatural</li>
+                        <li><strong>Ignoring scopes:</strong> Relying only on your monitor</li>
+                        <li><strong>Too many nodes:</strong> Creating an unmanageable tree</li>
+                    </ul>
+                </div>
+
+                <h2>Practical Exercise: Grade This Shot</h2>
+
+                <p>Let's practice with a common scenario. Download this <a href="#"
+                        style="color: var(--primary);">sample LOG footage</a> and follow along:</p>
+
+                <ol>
+                    <li>Apply the appropriate input LUT</li>
+                    <li>Correct exposure using the color wheels</li>
+                    <li>Adjust white balance using the picker tool</li>
+                    <li>Create contrast with the curves tool</li>
+                    <li>Isolate and enhance the sky using a qualifier</li>
+                    <li>Add a subtle vignette</li>
+                    <li>Export your final grade</li>
+                </ol>
+
+                <h2>Monitor Calibration & Environment</h2>
+
+                <p>Your grading environment is as important as your skills. Follow these guidelines:</p>
+
+                <ul>
+                    <li><strong>Monitor:</strong> Use a calibrated 10-bit panel (recommended: Eizo ColorEdge or BenQ SW
+                        series)</li>
+                    <li><strong>Lighting:</strong> Neutral gray walls (18% gray), D65 ambient lighting</li>
+                    <li><strong>Scopes:</strong> Always have your vectorscope, waveform, and histogram visible</li>
+                    <li><strong>Reference:</strong> Keep reference stills from films you admire</li>
+                </ul>
+
+                <h2>Export Settings for Different Platforms</h2>
+
+                <p>Different platforms have different requirements. Here's a quick reference:</p>
+
+                <pre><code>// YouTube (H.264)
+- Codec: H.264
+- Resolution: 3840x2160 (4K) or 1920x1080 (HD)
+- Frame rate: Match source (24, 25, 30, 60 fps)
+- Bitrate: 50 Mbps for 4K, 15 Mbps for HD
+- Color space: Rec.709
+
+// Instagram (H.264)
+- Codec: H.264
+- Resolution: 1080x1080 (Square) or 1080x1350 (Portrait)
+- Frame rate: 30 fps
+- Bitrate: 8-10 Mbps
+- Color space: Rec.709
+
+// Cinema (ProRes 4444)
+- Codec: Apple ProRes 4444
+- Resolution: Match timeline
+- Frame rate: Match timeline
+- Bit depth: 10-bit or higher
+- Color space: Rec.2020 or DCI-P3</code></pre>
+
+                <h2>Conclusion & Next Steps</h2>
+
+                <p>Mastering color grading takes time and practice, but with DaVinci Resolve's powerful tools, you have
+                    everything you need to create professional, cinematic looks. Remember:</p>
+
+                <ul>
+                    <li>Start with proper color management</li>
+                    <li>Master the basics before moving to advanced techniques</li>
+                    <li>Always use reference images</li>
+                    <li>Grade for the specific delivery platform</li>
+                    <li>Take breaks to rest your eyes</li>
+                </ul>
+
+                <p>For further learning, check out these resources:</p>
+
+                <div class="highlight-box">
+                    <h4><i class="fas fa-book-open"></i> Recommended Resources:</h4>
+                    <ul>
+                        <li>Blackmagic Design's official training</li>
+                        <li>Waqas Qazi's color grading courses</li>
+                        <li>Color Correction Handbook by Alexis Van Hurkman</li>
+                        <li>Mixing Light's online tutorials</li>
+                    </ul>
+                </div>
+
+                <!-- Author Section -->
+                <div class="author-section">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                        alt="Alex Motion" class="author-avatar">
+                    <div class="author-info">
+                        <h3>Alex Motion</h3>
+                        <p class="author-bio">
+                            With over a decade of color grading experience, Alex has worked on everything
+                            from indie films to major brand campaigns. He specializes in creating emotionally
+                            resonant color palettes that enhance storytelling. When not grading, he teaches
+                            color theory workshops and develops custom LUTs for the MotiVOItion community.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Share Section -->
+                <div class="share-section">
+                    <a href="#" class="share-btn twitter-share">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="share-btn facebook-share">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="share-btn linkedin-share">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:?subject=Mastering Cinematic Color Grading&body=Check out this tutorial: [URL]"
+                        class="share-btn email-share">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="navigation-links">
+                <a href="blog-post-future-motion-graphics.html" class="nav-link prev">
+                    <i class="fas fa-arrow-left"></i>
+                    <div>
+                        <h4>Previous Article</h4>
+                        <p>The Future of Motion Graphics</p>
+                    </div>
+                </a>
+
+                <a href="../blog.html" class="nav-link" style="margin: 0 auto;">
+                    <i class="fas fa-home"></i>
+                    <div>
+                        <h4>Back to Blog</h4>
+                        <p>View all articles</p>
+                    </div>
+                </a>
+
+                <a href="blog-post-camera-review.html" class="nav-link">
+                    <div>
+                        <h4>Next Article</h4>
+                        <p>Best Video Cameras for 2024</p>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Related Posts -->
+            <div class="related-posts">
+                <h2>More Color Grading Resources</h2>
+                <div class="related-grid">
+                    <a href="#" class="related-post">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Color Theory" class="related-image">
+                        <div class="related-content">
+                            <h3 class="related-title">Color Theory for Video Creators</h3>
+                            <p class="related-excerpt">Understanding the psychology of color and how to use it
+                                effectively in your videos.</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="related-post">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="LUT Creation" class="related-image">
+                        <div class="related-content">
+                            <h3 class="related-title">Creating Custom LUTs in DaVinci Resolve</h3>
+                            <p class="related-excerpt">Step-by-step guide to building your own signature looks with
+                                LUTs.</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="related-post">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Monitor Calibration" class="related-image">
+                        <div class="related-content">
+                            <h3 class="related-title">The Ultimate Guide to Monitor Calibration</h3>
+                            <p class="related-excerpt">How to properly calibrate your display for accurate color
+                                grading.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Comment Section -->
+            <div class="comment-section">
+                <h3>Questions or Tips?</h3>
+                <p style="color: #b0b0c0; margin-bottom: 1.5rem;">Share your color grading experiences or ask questions
+                    below:</p>
+                <form class="comment-form">
+                    <input type="text" class="comment-input" placeholder="Your Name" required>
+                    <input type="email" class="comment-input" placeholder="Your Email" required>
+                    <textarea class="comment-textarea" placeholder="Share your color grading tips or questions..."
+                        required></textarea>
+                    <button type="submit" class="comment-submit">Post Comment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-motion">MOTI</span>
+                        <span class="logo-voition">VOITION</span>
+                    </div>
+                    <p class="footer-tagline">
+                        Where motion meets emotion in every frame.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../script.js"></script>
+    <script>
+        // Color grading specific interactions
+        document.addEventListener('DOMContentLoaded', function () {
+            // Interactive color palette
+            const colorSwatches = document.querySelectorAll('.color-swatch');
+            colorSwatches.forEach(swatch => {
+                swatch.addEventListener('click', function () {
+                    const color = getComputedStyle(this).backgroundColor;
+                    navigator.clipboard.writeText(color).then(() => {
+                        const originalText = this.textContent;
+                        this.textContent = 'Copied!';
+                        this.style.transform = 'scale(1.1)';
+
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                            this.style.transform = 'scale(1)';
+                        }, 1500);
+                    });
+                });
+            });
+
+            // Image comparison slider
+            const createComparisonSlider = () => {
+                const container = document.querySelector('.before-after');
+                if (!container) return;
+
+                const slider = document.createElement('div');
+                slider.style.position = 'absolute';
+                slider.style.top = '0';
+                slider.style.left = '50%';
+                slider.style.transform = 'translateX(-50%)';
+                slider.style.width = '4px';
+                slider.style.height = '100%';
+                slider.style.background = 'var(--primary)';
+                slider.style.cursor = 'col-resize';
+                slider.style.zIndex = '10';
+
+                // Add handle
+                const handle = document.createElement('div');
+                handle.style.position = 'absolute';
+                handle.style.top = '50%';
+                handle.style.left = '50%';
+                handle.style.transform = 'translate(-50%, -50%)';
+                handle.style.width = '40px';
+                handle.style.height = '40px';
+                handle.style.background = 'var(--primary)';
+                handle.style.borderRadius = '50%';
+                handle.style.display = 'flex';
+                handle.style.alignItems = 'center';
+                handle.style.justifyContent = 'center';
+                handle.style.color = 'var(--dark)';
+                handle.innerHTML = '<i class="fas fa-arrows-alt-h"></i>';
+
+                slider.appendChild(handle);
+                container.style.position = 'relative';
+                container.appendChild(slider);
+
+                // Make slider draggable
+                let isDragging = false;
+
+                slider.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    document.body.style.cursor = 'col-resize';
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+
+                    const rect = container.getBoundingClientRect();
+                    const x = Math.min(Math.max(e.clientX - rect.left, 0), rect.width);
+                    const percentage = (x / rect.width) * 100;
+
+                    slider.style.left = `${percentage}%`;
+
+                    // Adjust images
+                    const beforeImage = container.querySelector('.before');
+                    const afterImage = container.querySelector('.after');
+
+                    if (beforeImage && afterImage) {
+                        beforeImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+                        afterImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+                    }
+                });
+
+                document.addEventListener('mouseup', () => {
+                    isDragging = false;
+                    document.body.style.cursor = '';
+                });
+            };
+
+            createComparisonSlider();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Future of Motion Graphics | MotiVOItion Blog</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f3ff;
+            --secondary: #ff00ff;
+            --accent: #9d4edd;
+            --dark: #0a0a0f;
+            --card-bg: rgba(20, 20, 30, 0.8);
+        }
+
+        .blog-post-page {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .post-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 0 2rem;
+        }
+
+        .post-category {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .post-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            color: #b0b0c0;
+            font-size: 1rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .post-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 6rem;
+        }
+
+        .post-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b0b0c0;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--primary);
+        }
+
+        .post-content h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: white;
+        }
+
+        .post-content ul,
+        .post-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+            color: #b0b0c0;
+        }
+
+        .post-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .post-content blockquote {
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: rgba(0, 243, 255, 0.05);
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #b0b0c0;
+        }
+
+        .post-content code {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--primary);
+        }
+
+        .post-content pre {
+            background: rgba(20, 20, 30, 0.8);
+            padding: 1.5rem;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(157, 78, 221, 0.1));
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #8888a0;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .author-section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 4rem 0;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+        }
+
+        .author-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .author-bio {
+            color: #b0b0c0;
+            line-height: 1.6;
+        }
+
+        .share-section {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .share-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-5px);
+        }
+
+        .twitter-share {
+            background: #1DA1F2;
+        }
+
+        .facebook-share {
+            background: #4267B2;
+        }
+
+        .linkedin-share {
+            background: #0A66C2;
+        }
+
+        .email-share {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+
+        .navigation-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(0, 243, 255, 0.1);
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            border-radius: 10px;
+            text-decoration: none;
+            color: #b0b0c0;
+            transition: all 0.3s ease;
+            max-width: 300px;
+        }
+
+        .nav-link:hover {
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .nav-link.prev:hover {
+            transform: translateX(-5px);
+        }
+
+        .nav-link i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .nav-link h4 {
+            color: white;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .related-posts {
+            margin-top: 6rem;
+        }
+
+        .related-posts h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .related-post {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .related-post:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .related-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .related-content {
+            padding: 1.5rem;
+        }
+
+        .related-title {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 0.75rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .related-excerpt {
+            color: #b0b0c0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .comment-section {
+            max-width: 800px;
+            margin: 4rem auto 0;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+        }
+
+        .comment-section h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .comment-input,
+        .comment-textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            color: white;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .comment-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .comment-submit {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .comment-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 243, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .post-title {
+                font-size: 2.2rem;
+            }
+
+            .featured-image {
+                height: 300px;
+            }
+
+            .author-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navigation-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-link {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body class="dark-mode">
+    <!-- Animated Background -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="../assets/images/logo%202.svg" alt="MotiVOItion Logo" style="width: 40px; height: 40px;">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-motion">MOTI</span>
+                    <span class="logo-voition">VOITION</span>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link" data-text="HOME">
+                            <i class="fas fa-home"></i>
+                            <span>HOME</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../about.html" class="nav-link" data-text="ABOUT">
+                            <i class="fas fa-user-astronaut"></i>
+                            <span>ABOUT</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../services.html" class="nav-link" data-text="SERVICES">
+                            <i class="fas fa-cogs"></i>
+                            <span>SERVICES</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../portfolio.html" class="nav-link" data-text="PORTFOLIO">
+                            <i class="fas fa-film"></i>
+                            <span>PORTFOLIO</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../upload.html" class="nav-link upload-btn" data-text="UPLOAD">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>UPLOAD</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../contact.html" class="nav-link" data-text="CONTACT">
+                            <i class="fas fa-satellite-dish"></i>
+                            <span>CONTACT</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../blog.html" class="nav-link active" data-text="BLOG">
+                            <i class="fas fa-blog"></i>
+                            <span>BLOG</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" id="menuToggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Blog Post Content -->
+    <section class="blog-post-page">
+        <div class="container">
+            <!-- Post Header -->
+            <div class="post-header">
+                <span class="post-category">Trends</span>
+                <h1 class="post-title">The Future of Motion Graphics: AI Integration & Real-time Rendering</h1>
+
+                <div class="post-meta">
+                    <div class="meta-item">
+                        <i class="far fa-calendar"></i>
+                        <span>March 15, 2024</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="far fa-clock"></i>
+                        <span>8 min read</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-eye"></i>
+                        <span>1,245 views</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Image -->
+            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                alt="AI Motion Graphics" class="featured-image">
+            <p class="image-caption">AI-generated motion graphics demonstrating the fusion of technology and creativity
+            </p>
+
+            <!-- Post Content -->
+            <div class="post-content">
+                <p>The motion graphics landscape is undergoing a seismic shift. As we move deeper into 2024, artificial
+                    intelligence and real-time rendering technologies are not just buzzwords—they're fundamentally
+                    transforming how we create, animate, and deliver visual content. In this comprehensive exploration,
+                    we'll dive into the technologies that are reshaping our industry and what they mean for motion
+                    designers everywhere.</p>
+
+                <div class="highlight-box">
+                    <h4><i class="fas fa-bolt"></i> Key Takeaways:</h4>
+                    <ul>
+                        <li>AI is automating 40% of routine animation tasks</li>
+                        <li>Real-time rendering cuts production time by 70%</li>
+                        <li>Cloud-based collaboration is becoming industry standard</li>
+                        <li>Motion graphics are becoming interactive experiences</li>
+                    </ul>
+                </div>
+
+                <h2>The AI Revolution in Motion Design</h2>
+
+                <p>Artificial intelligence is no longer just a tool for generating static images—it's becoming an
+                    integral part of the motion graphics pipeline. From automated character animation to intelligent
+                    scene composition, AI is streamlining workflows in unprecedented ways.</p>
+
+                <h3>AI-Powered Animation Tools</h3>
+
+                <p>Modern AI animation tools like Runway ML and DeepMotion are revolutionizing how we approach character
+                    animation. These platforms use machine learning algorithms to analyze motion capture data and
+                    generate realistic animations automatically. What used to take days of manual keyframing can now be
+                    accomplished in hours.</p>
+
+                <div class="highlight-box">
+                    <h4><i class="fas fa-chart-line"></i> Impact Statistics:</h4>
+                    <ul>
+                        <li><strong>45% faster</strong> character animation workflows</li>
+                        <li><strong>60% reduction</strong in lip-syncing time</li>
+                        <li><strong>85% accuracy</strong> in motion prediction algorithms</li>
+                    </ul>
+                </div>
+
+                <h3>Intelligent Style Transfer</h3>
+
+                <p>Style transfer algorithms have evolved dramatically. Now, motion designers can apply complex visual
+                    styles to entire animation sequences with a single click. Want your corporate explainer video to
+                    have a Studio Ghibli aesthetic? AI can make it happen in real-time.</p>
+
+                <blockquote>
+                    "AI isn't replacing motion designers—it's augmenting our capabilities. The most successful
+                    professionals will be those who learn to collaborate with AI as a creative partner."
+                    <cite>— Alex Motion, Creative Director at MotiVOItion</cite>
+                </blockquote>
+
+                <h2>Real-time Rendering: The Game Changer</h2>
+
+                <p>Real-time rendering engines like Unreal Engine and Unity are breaking down the barriers between
+                    pre-production and final delivery. These technologies allow motion designers to see their work come
+                    to life instantly, eliminating the need for time-consuming render queues.</p>
+
+                <h3>GPU Acceleration & Ray Tracing</h3>
+
+                <p>Modern GPUs with dedicated ray tracing cores are making cinematic-quality rendering accessible in
+                    real-time. NVIDIA's RTX technology, for example, allows motion designers to work with physically
+                    accurate lighting, shadows, and reflections without waiting for renders to complete.</p>
+
+                <pre><code>// Example: Real-time particle system in GLSL
+uniform float time;
+uniform vec2 resolution;
+
+void main() {
+    vec2 uv = gl_FragCoord.xy / resolution.xy;
+    vec3 color = vec3(0.0);
+    
+    // Real-time particle calculations
+    for(int i = 0; i < 100; i++) {
+        float offset = float(i) * 0.1;
+        vec2 pos = vec2(sin(time + offset), cos(time + offset));
+        float dist = length(uv - pos);
+        color += vec3(1.0) / (dist * 50.0);
+    }
+    
+    gl_FragColor = vec4(color, 1.0);
+}</code></pre>
+
+                <h2>Cloud-Based Collaboration</h2>
+
+                <p>The future of motion graphics is collaborative and cloud-native. Platforms like Adobe Creative Cloud
+                    and Figma are demonstrating how teams can work together seamlessly, regardless of geographical
+                    location.</p>
+
+                <h3>Version Control for Motion Projects</h3>
+
+                <p>Git-style version control is coming to motion graphics. Imagine being able to branch, merge, and roll
+                    back changes in your After Effects projects just like software developers do with code. This level
+                    of collaboration and version management is becoming reality through platforms like LottieFiles and
+                    Haiku Animator.</p>
+
+                <h2>Interactive Motion Graphics</h2>
+
+                <p>Motion graphics are no longer just linear experiences. With technologies like WebGL and WebGPU, we're
+                    creating interactive animations that respond to user input, creating immersive experiences that
+                    engage audiences in new ways.</p>
+
+                <div class="highlight-box">
+                    <h4><i class="fas fa-mobile-alt"></i> Interactive Trends:</h4>
+                    <ul>
+                        <li>Scroll-triggered animations</li>
+                        <li>Mouse-follow effects</li>
+                        <li>Device motion detection</li>
+                        <li>Real-time data visualization</li>
+                    </ul>
+                </div>
+
+                <h2>Procedural Generation & Dynamic Systems</h2>
+
+                <p>Procedural generation techniques, powered by AI, are enabling motion designers to create infinitely
+                    variable animations. From evolving particle systems to self-assembling typography, these dynamic
+                    systems create unique visual experiences every time they're viewed.</p>
+
+                <h3>Houdini's AI Integration</h3>
+
+                <p>SideFX Houdini is at the forefront of procedural motion design, and their integration of AI tools is
+                    pushing the boundaries even further. Artists can now use natural language prompts to generate
+                    complex VFX setups, dramatically reducing the learning curve for new users.</p>
+
+                <h2>The Ethical Considerations</h2>
+
+                <p>As AI becomes more integrated into our creative workflows, important ethical questions arise:</p>
+
+                <ul>
+                    <li><strong>Originality:</strong> How do we define creative ownership when AI generates significant
+                        portions of our work?</li>
+                    <li><strong>Job Displacement:</strong> Will AI replace human motion designers, or simply change the
+                        nature of our work?</li>
+                    <li><strong>Bias in Training Data:</strong> How do we ensure AI models don't perpetuate harmful
+                        stereotypes?</li>
+                    <li><strong>Environmental Impact:</strong> The computational power required for AI training has
+                        significant energy costs</li>
+                </ul>
+
+                <h2>Preparing for the Future</h2>
+
+                <p>To stay relevant in this rapidly evolving landscape, motion designers should focus on developing
+                    these skills:</p>
+
+                <ol>
+                    <li><strong>AI Literacy:</strong> Understand how to work with AI tools effectively</li>
+                    <li><strong>Real-time Engine Proficiency:</strong> Master at least one real-time rendering platform
+                    </li>
+                    <li><strong>Coding Basics:</strong> Learn Python for automation and GLSL for shader programming</li>
+                    <li><strong>Data Visualization:</strong> Combine design skills with data analysis</li>
+                    <li><strong>Interactive Design:</strong> Understand user experience principles</li>
+                </ol>
+
+                <div class="highlight-box">
+                    <h4><i class="fas fa-graduation-cap"></i> Learning Resources:</h4>
+                    <ul>
+                        <li><a href="#" style="color: var(--primary);">School of Motion's AI for Motion Design
+                                course</a></li>
+                        <li><a href="#" style="color: var(--primary);">Unreal Engine for Motion Designers on Udemy</a>
+                        </li>
+                        <li><a href="#" style="color: var(--primary);">The Coding Train's Creative Coding tutorials</a>
+                        </li>
+                        <li><a href="#" style="color: var(--primary);">MotiVOItion's Interactive Motion Graphics
+                                workshop</a></li>
+                    </ul>
+                </div>
+
+                <h2>Conclusion</h2>
+
+                <p>The future of motion graphics is bright, intelligent, and interactive. While AI and real-time
+                    technologies are transforming our workflows, they're not replacing the need for human
+                    creativity—they're amplifying it. The motion designers who thrive will be those who embrace these
+                    tools, learn to collaborate with AI, and focus on the uniquely human aspects of creativity:
+                    storytelling, emotion, and vision.</p>
+
+                <p>At MotiVOItion, we're excited to be at the forefront of these changes, experimenting with new
+                    technologies while staying true to the art of visual storytelling. The tools may change, but our
+                    mission remains the same: to create motion that moves people, both literally and emotionally.</p>
+
+                <!-- Author Section -->
+                <div class="author-section">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
+                        alt="Alex Motion" class="author-avatar">
+                    <div class="author-info">
+                        <h3>Alex Motion</h3>
+                        <p class="author-bio">
+                            Creative Director and Founder of MotiVOItion. With over 12 years in motion design,
+                            Alex specializes in blending traditional animation techniques with cutting-edge technology.
+                            When not experimenting with AI tools, you can find him mentoring emerging designers
+                            and speaking at industry conferences worldwide.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Share Section -->
+                <div class="share-section">
+                    <a href="#" class="share-btn twitter-share">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="share-btn facebook-share">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="share-btn linkedin-share">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:?subject=The Future of Motion Graphics&body=Check out this article: [URL]"
+                        class="share-btn email-share">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="navigation-links">
+                <a href="#" class="nav-link prev">
+                    <i class="fas fa-arrow-left"></i>
+                    <div>
+                        <h4>Previous Article</h4>
+                        <p>Mastering Cinematic Color Grading</p>
+                    </div>
+                </a>
+
+                <a href="../blog.html" class="nav-link" style="margin: 0 auto;">
+                    <i class="fas fa-home"></i>
+                    <div>
+                        <h4>Back to Blog</h4>
+                        <p>View all articles</p>
+                    </div>
+                </a>
+
+                <a href="#" class="nav-link">
+                    <div>
+                        <h4>Next Article</h4>
+                        <p>Best Video Cameras for 2024</p>
+                    </div>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Related Posts -->
+            <div class="related-posts">
+                <h2>Related Articles</h2>
+                <div class="related-grid">
+                    <a href="blog-post-color-grading.html" class="related-post">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Color Grading" class="related-image">
+                        <div class="related-content">
+                            <h3 class="related-title">Mastering Cinematic Color Grading in DaVinci Resolve</h3>
+                            <p class="related-excerpt">Professional techniques for achieving cinematic color grades that
+                                tell compelling visual stories.</p>
+                        </div>
+                    </a>
+
+                    <a href="blog-post-after-effects.html" class="related-post">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="After Effects" class="related-image">
+                        <div class="related-content">
+                            <h3 class="related-title">10 After Effects Shortcuts That Will Save You Hours</h3>
+                            <p class="related-excerpt">Essential keyboard shortcuts and workflow tips used by
+                                professional motion designers.</p>
+                        </div>
+                    </a>
+
+                    <a href="blog-post-camera-review.html" class="related-post">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Camera Review" class="related-image">
+                        <div class="related-content">
+                            <h3 class="related-title">Best Video Cameras for 2024: From Budget to Professional</h3>
+                            <p class="related-excerpt">Comprehensive guide to choosing the right camera for your video
+                                production needs.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Comment Section -->
+            <div class="comment-section">
+                <h3>Join the Discussion</h3>
+                <form class="comment-form">
+                    <input type="text" class="comment-input" placeholder="Your Name" required>
+                    <input type="email" class="comment-input" placeholder="Your Email" required>
+                    <textarea class="comment-textarea" placeholder="Share your thoughts on AI in motion graphics..."
+                        required></textarea>
+                    <button type="submit" class="comment-submit">Post Comment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-motion">MOTI</span>
+                        <span class="logo-voition">VOITION</span>
+                    </div>
+                    <p class="footer-tagline">
+                        Where motion meets emotion in every frame.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../script.js"></script>
+    <script>
+        // Blog Post Specific JavaScript
+        document.addEventListener('DOMContentLoaded', function () {
+            // Share functionality
+            const shareButtons = document.querySelectorAll('.share-btn');
+
+            shareButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const url = window.location.href;
+                    const title = document.title;
+
+                    if (this.classList.contains('twitter-share')) {
+                        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`, '_blank');
+                    } else if (this.classList.contains('facebook-share')) {
+                        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+                    } else if (this.classList.contains('linkedin-share')) {
+                        window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`, '_blank');
+                    } else if (this.classList.contains('email-share')) {
+                        const emailBody = `Check out this article: ${title}\n\n${url}`;
+                        window.location.href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(emailBody)}`;
+                    }
+                });
+            });
+
+            // Reading time estimation
+            function updateReadingTime() {
+                const content = document.querySelector('.post-content').textContent;
+                const wordCount = content.split(/\s+/).length;
+                const readingTime = Math.ceil(wordCount / 200);
+
+                const readingTimeElement = document.querySelector('.meta-item:nth-child(2) span');
+                if (readingTimeElement) {
+                    readingTimeElement.textContent = `${readingTime} min read`;
+                }
+            }
+
+            updateReadingTime();
+
+            // View counter simulation
+            function updateViewCount() {
+                const viewElement = document.querySelector('.meta-item:nth-child(3) span');
+                if (viewElement) {
+                    let currentViews = parseInt(localStorage.getItem('postViews') || '1245');
+                    currentViews++;
+                    localStorage.setItem('postViews', currentViews);
+                    viewElement.textContent = currentViews.toLocaleString() + ' views';
+                }
+            }
+
+            updateViewCount();
+
+            // Comment form submission
+            const commentForm = document.querySelector('.comment-form');
+            if (commentForm) {
+                commentForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const submitBtn = this.querySelector('.comment-submit');
+                    const originalText = submitBtn.textContent;
+
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Posting...';
+
+                    // Simulate API call
+                    setTimeout(() => {
+                        submitBtn.textContent = 'Comment Posted!';
+                        commentForm.reset();
+
+                        setTimeout(() => {
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+
+                            // Show success message
+                            alert('Thank you for your comment! It will appear after moderation.');
+                        }, 2000);
+                    }, 1500);
+                });
+            }
+
+            // Code block copy functionality
+            const codeBlocks = document.querySelectorAll('pre code');
+            codeBlocks.forEach(block => {
+                block.style.position = 'relative';
+                block.style.paddingRight = '3rem';
+
+                const copyBtn = document.createElement('button');
+                copyBtn.innerHTML = '<i class="far fa-copy"></i>';
+                copyBtn.style.position = 'absolute';
+                copyBtn.style.top = '0.5rem';
+                copyBtn.style.right = '0.5rem';
+                copyBtn.style.background = 'rgba(0, 243, 255, 0.1)';
+                copyBtn.style.border = '1px solid var(--primary)';
+                copyBtn.style.color = 'var(--primary)';
+                copyBtn.style.padding = '0.25rem 0.5rem';
+                copyBtn.style.borderRadius = '4px';
+                copyBtn.style.cursor = 'pointer';
+                copyBtn.style.fontSize = '0.8rem';
+
+                copyBtn.addEventListener('click', function () {
+                    const code = block.textContent;
+                    navigator.clipboard.writeText(code).then(() => {
+                        const originalHTML = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check"></i>';
+                        this.style.background = 'var(--primary)';
+                        this.style.color = 'var(--dark)';
+
+                        setTimeout(() => {
+                            this.innerHTML = originalHTML;
+                            this.style.background = 'rgba(0, 243, 255, 0.1)';
+                            this.style.color = 'var(--primary)';
+                        }, 2000);
+                    });
+                });
+
+                block.appendChild(copyBtn);
+            });
+        });
+    </script>
+</body>
+
+</html>

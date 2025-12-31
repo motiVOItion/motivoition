@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Videos | MotiVOItion</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B00;
+            --secondary: #FFB347;
+            --accent: #FDFD96;
+            --dark: #1B1B1B;
+            --card-bg: rgba(30, 30, 30, 0.8);
+        }
+
+        .upload-page {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .upload-progress {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .upload-success {
+            text-align: center;
+            padding: 4rem 2rem;
+            display: none;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 3rem;
+            color: white;
+            animation: bounce 1s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+
+<body class="dark-mode">
+    <!-- Animated Background -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="../assets/images/logo%202.svg" alt="MotiVOItion Logo" style="width: 40px; height: 40px;">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-motion">MOTI</span>
+                    <span class="logo-voition">VOITION</span>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link" data-text="HOME">
+                            <i class="fas fa-home"></i>
+                            <span>HOME</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link" data-text="ABOUT">
+                            <i class="fas fa-user-astronaut"></i>
+                            <span>ABOUT</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="services.html" class="nav-link" data-text="SERVICES">
+                            <i class="fas fa-cogs"></i>
+                            <span>SERVICES</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="portfolio.html" class="nav-link" data-text="PORTFOLIO">
+                            <i class="fas fa-film"></i>
+                            <span>PORTFOLIO</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="upload.html" class="nav-link active upload-btn" data-text="UPLOAD">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>UPLOAD</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link" data-text="CONTACT">
+                            <i class="fas fa-satellite-dish"></i>
+                            <span>CONTACT</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html" class="nav-link" data-text="BLOG">
+                            <i class="fas fa-blog"></i>
+                            <span>BLOG</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu -->
+            <button class="menu-toggle" id="menuToggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Upload Section -->
+    <section class="upload-page">
+        <div class="container">
+            <div class="upload-container">
+                <!-- Upload Header -->
+                <div class="upload-header">
+                    <h1>
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        Upload Your Videos
+                    </h1>
+                    <p class="upload-subtitle">
+                        Share your motion creations with the world.
+                        Direct upload from GitHub supported.
+                    </p>
+                </div>
+
+                <!-- Upload Form -->
+                <form id="uploadForm" class="upload-form" enctype="multipart/form-data">
+                    <!-- CSRF Token -->
+                    <input type="hidden" id="csrf_token" name="csrf_token">
+
+                    <!-- Video Details -->
+                    <div class="form-group">
+                        <label class="form-label" for="videoTitle">
+                            <i class="fas fa-heading"></i>
+                            Video Title
+                        </label>
+                        <input type="text" id="videoTitle" name="title" class="form-input"
+                            placeholder="Enter a descriptive title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="compressionLevel">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            Compression Level
+                        </label>
+                        <select id="compressionLevel" name="compression_level" class="form-input"
+                            style="background: var(--card-bg); color: white;">
+                            <option value="original">Original (No Compression)</option>
+                            <option value="high">High Quality (Light Compression)</option>
+                            <option value="medium" selected>Medium (Recommended)</option>
+                            <option value="low">Low Size (Heavy Compression)</option>
+                        </select>
+                        <small class="form-help" style="color: #888;">Requires FFmpeg on server. Falls back to original
+                            if unavailable.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="videoDescription">
+                            <i class="fas fa-align-left"></i>
+                            Description
+                        </label>
+                        <textarea id="videoDescription" name="description" class="form-textarea"
+                            placeholder="Describe your video, techniques used, etc." rows="4"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="videoCategory">
+                                <i class="fas fa-folder"></i>
+                                Category
+                            </label>
+                            <select id="videoCategory" name="category" class="form-select" required>
+                                <option value="">Select Category</option>
+                                <option value="motion">Motion Graphics</option>
+                                <option value="cinematic">Cinematic</option>
+                                <option value="timelapse">Time-lapse</option>
+                                <option value="experimental">Experimental</option>
+                                <option value="tutorial">Tutorial</option>
+                                <option value="showcase">Showcase</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="videoTags">
+                                <i class="fas fa-tags"></i>
+                                Tags
+                            </label>
+                            <input type="text" id="videoTags" name="tags" class="form-input"
+                                placeholder="e.g., 4k, cinematic, drone, motion">
+                        </div>
+                    </div>
+
+                    <!-- File Upload Area -->
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" id="fileInput" name="video" accept="video/mp4,video/quicktime"
+                            style="display: none;">
+
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+
+                        <h3>Drop your video here or click to browse</h3>
+                        <p>Supported formats: MP4, MOV | Max size: 500MB</p>
+
+                        <div class="file-types">
+                            <span class="file-type">MP4</span>
+                            <span class="file-type">MOV</span>
+                            <span class="file-type">4K</span>
+                            <span class="file-type">HD</span>
+                        </div>
+
+                        <div class="file-info" id="fileInfo"></div>
+                    </div>
+
+                    <!-- Video Preview -->
+                    <div class="video-preview" id="videoPreview">
+                        <div class="preview-header">
+                            <h4>
+                                <i class="fas fa-eye"></i>
+                                Preview
+                            </h4>
+                            <button type="button" class="btn-small" onclick="clearPreview()">
+                                <i class="fas fa-times"></i>
+                                Clear
+                            </button>
+                        </div>
+                        <div class="preview-video">
+                            <video controls id="previewVideo">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+
+                    <!-- GitHub Integration -->
+                    <div class="github-integration">
+                        <div class="github-header">
+                            <i class="fab fa-github"></i>
+                            <h3>GitHub Integration</h3>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="githubToggle">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="github-fields" id="githubFields" style="display: none;">
+                            <div class="form-group">
+                                <label class="form-label" for="githubRepo">
+                                    <i class="fas fa-code-branch"></i>
+                                    Repository
+                                </label>
+                                <input type="text" id="githubRepo" name="github_repo" class="form-input"
+                                    placeholder="username/repo">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="githubBranch">
+                                    <i class="fas fa-code-commit"></i>
+                                    Branch
+                                </label>
+                                <input type="text" id="githubBranch" name="github_branch" class="form-input"
+                                    placeholder="main">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="githubPath">
+                                    <i class="fas fa-folder"></i>
+                                    Path
+                                </label>
+                                <input type="text" id="githubPath" name="github_path" class="form-input"
+                                    placeholder="assets/videos/">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="githubToken">
+                                    <i class="fas fa-key"></i>
+                                    Access Token
+                                </label>
+                                <input type="password" id="githubToken" name="github_token" class="form-input"
+                                    placeholder="ghp_xxxxxxxx">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upload Progress -->
+                    <div class="upload-progress" id="uploadProgress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-info">
+                            <span id="progressText">Uploading... 0%</span>
+                            <span id="uploadSpeed">0 MB/s</span>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit" id="submitBtn">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            Upload Video
+                        </button>
+
+                        <button type="reset" class="btn-reset" id="resetBtn">
+                            <i class="fas fa-redo"></i>
+                            Reset Form
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Upload Success Message -->
+                <div class="upload-success" id="uploadSuccess">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2>Upload Successful!</h2>
+                    <p>Your video has been uploaded and is being processed.</p>
+                    <p class="success-details" id="successDetails"></p>
+                    <div class="success-actions">
+                        <a href="portfolio.html" class="btn-primary">
+                            <i class="fas fa-eye"></i>
+                            View in Portfolio
+                        </a>
+                        <button class="btn-secondary" onclick="resetUploadForm()">
+                            <i class="fas fa-plus"></i>
+                            Upload Another
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload Guidelines -->
+            <div class="upload-guidelines">
+                <h3>
+                    <i class="fas fa-info-circle"></i>
+                    Upload Guidelines
+                </h3>
+                <div class="guidelines-grid">
+                    <div class="guideline">
+                        <div class="guideline-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h4>Video Format</h4>
+                        <p>MP4 or MOV files up to 500MB</p>
+                    </div>
+
+                    <div class="guideline">
+                        <div class="guideline-icon">
+                            <i class="fas fa-compress-alt"></i>
+                        </div>
+                        <h4>Compression</h4>
+                        <p>Use H.264 codec for best results</p>
+                    </div>
+
+                    <div class="guideline">
+                        <div class="guideline-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <h4>GitHub Sync</h4>
+                        <p>Direct upload from your repositories</p>
+                    </div>
+
+                    <div class="guideline">
+                        <div class="guideline-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Security</h4>
+                        <p>All uploads are scanned and verified</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-motion">MOTI</span>
+                        <span class="logo-voition">VOITION</span>
+                    </div>
+                    <p class="footer-tagline">
+                        Where motion meets emotion in every frame.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Upload</h4>
+                        <a href="#">Upload Guide</a>
+                        <a href="#">Supported Formats</a>
+                        <a href="#">GitHub Integration</a>
+                        <a href="#">API Documentation</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 MotiVOItion. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../script.js"></script>
+    <script>
+        // Upload Page Specific JavaScript
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize CSRF token
+            fetch('upload-handler.php?csrf_token=true')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('csrf_token').value = data.csrf_token;
+                })
+                .catch(error => {
+                    console.error('Error fetching CSRF token:', error);
+                });
+
+            // File upload handling
+            const fileInput = document.getElementById('fileInput');
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInfo = document.getElementById('fileInfo');
+            const videoPreview = document.getElementById('videoPreview');
+            const previewVideo = document.getElementById('previewVideo');
+            const uploadForm = document.getElementById('uploadForm');
+            const uploadProgress = document.getElementById('uploadProgress');
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const uploadSuccess = document.getElementById('uploadSuccess');
+            const successDetails = document.getElementById('successDetails');
+            const submitBtn = document.getElementById('submitBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const githubToggle = document.getElementById('githubToggle');
+            const githubFields = document.getElementById('githubFields');
+
+            // GitHub toggle
+            if (githubToggle && githubFields) {
+                githubToggle.addEventListener('change', function () {
+                    githubFields.style.display = this.checked ? 'grid' : 'none';
+                });
+            }
+
+            // Drag and drop functionality
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, highlight, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                uploadArea.addEventListener(eventName, unhighlight, false);
+            });
+
+            function highlight() {
+                uploadArea.style.borderColor = 'var(--primary)';
+                uploadArea.style.background = 'rgba(0, 243, 255, 0.05)';
+            }
+
+            function unhighlight() {
+                uploadArea.style.borderColor = 'rgba(0, 243, 255, 0.3)';
+                uploadArea.style.background = 'transparent';
+            }
+
+            // Handle dropped files
+            uploadArea.addEventListener('drop', handleDrop, false);
+
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+
+                if (files.length) {
+                    handleFiles(files[0]);
+                }
+            }
+
+            // Handle file input change
+            fileInput.addEventListener('change', function () {
+                if (this.files.length) {
+                    handleFiles(this.files[0]);
+                }
+            });
+
+            // Click upload area to trigger file input
+            uploadArea.addEventListener('click', function () {
+                fileInput.click();
+            });
+
+            // Handle selected files
+            function handleFiles(file) {
+                // Validate file
+                if (!validateFile(file)) {
+                    return;
+                }
+
+                // Update file info
+                updateFileInfo(file);
+
+                // Show preview
+                showPreview(file);
+            }
+
+            // Validate file
+            function validateFile(file) {
+                const validTypes = ['video/mp4', 'video/quicktime'];
+                const maxSize = 500 * 1024 * 1024; // 500MB
+
+                if (!validTypes.includes(file.type)) {
+                    alert('Please upload MP4 or MOV files only.');
+                    return false;
+                }
+
+                if (file.size > maxSize) {
+                    alert('File size must be less than 500MB.');
+                    return false;
+                }
+
+                return true;
+            }
+
+            // Update file information
+            function updateFileInfo(file) {
+                const fileSize = formatFileSize(file.size);
+                fileInfo.innerHTML = `
+                    <strong>Selected File:</strong> ${file.name}<br>
+                    <strong>Size:</strong> ${fileSize}<br>
+                    <strong>Type:</strong> ${file.type}
+                `;
+                fileInfo.style.display = 'block';
+            }
+
+            // Format file size
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            // Show video preview
+            function showPreview(file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    previewVideo.src = e.target.result;
+                    videoPreview.style.display = 'block';
+
+                    // Scroll to preview
+                    videoPreview.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                };
+
+                reader.readAsDataURL(file);
+            }
+
+            // Clear preview
+            window.clearPreview = function () {
+                fileInput.value = '';
+                previewVideo.src = '';
+                videoPreview.style.display = 'none';
+                fileInfo.style.display = 'none';
+                fileInfo.innerHTML = '';
+            };
+
+            // Form submission
+            uploadForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                if (!fileInput.files.length) {
+                    alert('Please select a video file to upload.');
+                    return;
+                }
+
+                // Disable submit button
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+
+                // Show progress
+                uploadProgress.style.display = 'block';
+
+                // Create FormData
+                const formData = new FormData(this);
+
+                try {
+                    const response = await fetch('upload-handler.php', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    });
+
+                    // Handle non-JSON responses (like PHP errors)
+                    const text = await response.text();
+                    let result;
+                    try {
+                        result = JSON.parse(text);
+                    } catch (e) {
+                        throw new Error('Server returned invalid JSON: ' + text);
+                    }
+
+                    if (result.success) {
+                        // Show success message
+                        uploadForm.style.display = 'none';
+                        uploadSuccess.style.display = 'block';
+
+                        // Update success details
+                        const fileName = fileInput.files[0].name;
+                        const fileSize = formatFileSize(fileInput.files[0].size);
+                        successDetails.innerHTML = `
+                            <strong>File:</strong> ${fileName}<br>
+                            <strong>Size:</strong> ${fileSize}<br>
+                            ${result.video_id ? '<strong>ID:</strong> ' + result.video_id + '<br>' : ''}
+                            <strong>Status:</strong> Uploaded and saved successfully
+                        `;
+                    } else {
+                        // Show error
+                        alert('Upload failed: ' + (result.error || 'Unknown error'));
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Upload Video';
+                        uploadProgress.style.display = 'none';
+                    }
+                } catch (error) {
+                    console.error('Upload error:', error);
+                    alert('Upload failed: ' + error.message);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Upload Video';
+                    uploadProgress.style.display = 'none';
+                }
+            });
+
+            // Reset form
+            window.resetUploadForm = function () {
+                uploadForm.reset();
+                clearPreview();
+                uploadForm.style.display = 'block';
+                uploadSuccess.style.display = 'none';
+                uploadProgress.style.display = 'none';
+                progressFill.style.width = '0%';
+                progressText.textContent = 'Uploading... 0%';
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Upload Video';
+
+                if (githubToggle) {
+                    githubToggle.checked = false;
+                    githubFields.style.display = 'none';
+                }
+            };
+
+            // Reset button
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function () {
+                    if (confirm('Are you sure you want to reset the form? All data will be lost.')) {
+                        resetUploadForm();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

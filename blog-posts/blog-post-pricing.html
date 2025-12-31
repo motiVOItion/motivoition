@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Strategies for Motion Design Projects | Motivoition</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .blog-hero {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('assets/images/placeholder.jpg') center/cover;
+            opacity: 0.15;
+        }
+        
+        .blog-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .blog-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .blog-content {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .blog-content h2 {
+            color: #6a11cb;
+            margin: 50px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .blog-content h3 {
+            color: #2575fc;
+            margin: 30px 0 15px;
+        }
+        
+        .blog-content p {
+            margin-bottom: 25px;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 25px;
+            padding-left: 30px;
+        }
+        
+        .blog-content li {
+            margin-bottom: 10px;
+        }
+        
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .pricing-table th {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .pricing-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pricing-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .pricing-table tr:hover {
+            background-color: #f0f5ff;
+        }
+        
+        .price-tag {
+            font-weight: 700;
+            color: #6a11cb;
+            font-size: 1.1rem;
+        }
+        
+        .quote-box {
+            background: linear-gradient(to right, #f8f9ff, #f0f5ff);
+            border-left: 5px solid #2575fc;
+            padding: 25px;
+            margin: 40px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .quote-box p {
+            font-style: italic;
+            margin: 0;
+            color: #444;
+            font-size: 1.1rem;
+        }
+        
+        .calculator-box {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+        
+        .calculator-box h3 {
+            margin-top: 0;
+            color: #6a11cb;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        .form-group select:focus, .form-group input:focus {
+            border-color: #6a11cb;
+            outline: none;
+        }
+        
+        .result-box {
+            background: #f0f5ff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .result-box h4 {
+            margin: 0 0 10px;
+            color: #2575fc;
+        }
+        
+        .estimated-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #6a11cb;
+        }
+        
+        .blog-navigation {
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 60px auto 40px;
+            padding: 0 20px;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(106, 17, 203, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .blog-navigation {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-btn {
+                justify-content: center;
+            }
+            
+            .pricing-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.svg" alt="Motivoition Logo">
+                <span>Motivoition</span>
+            </a>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+                <a href="upload.html" class="btn-primary">Upload Project</a>
+            </div>
+            
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="blog-hero-content">
+            <h1>Pricing Strategies for Motion Design Projects</h1>
+            <p>How to price your creative work fairly and profitably</p>
+            
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="far fa-user"></i>
+                    <span>Alex Morgan</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="far fa-calendar"></i>
+                    <span>June 15, 2023</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="far fa-clock"></i>
+                    <span>8 min read</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="far fa-folder"></i>
+                    <span>Business, Freelancing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <article class="blog-content">
+        <p>One of the most challenging aspects of being a motion designer or video editor is determining how to price your services. Charge too much, and you might lose clients to competitors. Charge too little, and you're undervaluing your skills and expertise. In this comprehensive guide, we'll explore effective pricing strategies that ensure you're compensated fairly while maintaining competitive rates.</p>
+        
+        <h2>Understanding Different Pricing Models</h2>
+        <p>Before we dive into specific numbers, it's crucial to understand the different pricing models available to motion designers. Each has its advantages and disadvantages, and the best choice often depends on the project type and client relationship.</p>
+        
+        <h3>Hourly Rate</h3>
+        <p>Charging by the hour is straightforward and ensures you're paid for all the time you invest. However, it can sometimes penalize efficiency and create uncomfortable conversations about time spent.</p>
+        
+        <h3>Project-Based Pricing</h3>
+        <p>With project-based pricing, you quote a fixed price for the entire project. This approach provides clarity for clients and rewards efficiency, but requires accurate scoping to avoid underestimating work.</p>
+        
+        <h3>Value-Based Pricing</h3>
+        <p>This advanced strategy ties your fee to the value your work creates for the client. For example, a promotional video that's expected to generate significant sales could command a higher price than one with purely informational purposes.</p>
+        
+        <div class="quote-box">
+            <p>"Your pricing should reflect not just the time you spend, but the value you create, the problems you solve, and the expertise you bring to the table."</p>
+        </div>
+        
+        <h2>Industry Pricing Benchmarks</h2>
+        <p>While rates vary based on experience, location, and specialization, here are some general benchmarks for motion design pricing:</p>
+        
+        <table class="pricing-table">
+            <thead>
+                <tr>
+                    <th>Service Type</th>
+                    <th>Experience Level</th>
+                    <th>Hourly Rate</th>
+                    <th>Project Range</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Basic Video Editing</td>
+                    <td>Beginner</td>
+                    <td class="price-tag">$25 - $50</td>
+                    <td>$200 - $1,000</td>
+                </tr>
+                <tr>
+                    <td>Motion Graphics</td>
+                    <td>Intermediate</td>
+                    <td class="price-tag">$50 - $100</td>
+                    <td>$1,000 - $5,000</td>
+                </tr>
+                <tr>
+                    <td>2D/3D Animation</td>
+                    <td>Advanced</td>
+                    <td class="price-tag">$75 - $150</td>
+                    <td>$3,000 - $15,000</td>
+                </tr>
+                <tr>
+                    <td>Explainer Video</td>
+                    <td>Expert</td>
+                    <td class="price-tag">$100 - $200+</td>
+                    <td>$5,000 - $30,000+</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>Factors That Influence Your Pricing</h2>
+        <p>When determining your rates, consider these key factors:</p>
+        
+        <ul>
+            <li><strong>Experience and Expertise:</strong> More years in the industry and specialized skills justify higher rates.</li>
+            <li><strong>Project Complexity:</strong> Simple edits cost less than complex animations with custom illustrations and sound design.</li>
+            <li><strong>Turnaround Time:</strong> Rush projects typically command a premium (often 25-50% more).</li>
+            <li><strong>Client Budget:</strong> Corporate clients usually have larger budgets than small businesses or non-profits.</li>
+            <li><strong>Usage Rights:</strong> Broader usage (national TV, global web) should increase your fee.</li>
+            <li><strong>Revisions:</strong> Define how many revisions are included in your base price.</li>
+        </ul>
+        
+        <h2>Pricing Calculator</h2>
+        <p>Use this interactive calculator to estimate a project price based on common variables:</p>
+        
+        <div class="calculator-box">
+            <h3>Motion Design Project Calculator</h3>
+            
+            <div class="form-group">
+                <label for="projectType">Project Type</label>
+                <select id="projectType">
+                    <option value="500">Basic Video Editing</option>
+                    <option value="1500" selected>Motion Graphics</option>
+                    <option value="3000">2D Animation</option>
+                    <option value="6000">3D Animation</option>
+                    <option value="8000">Explainer Video</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="videoLength">Video Length (minutes)</label>
+                <input type="range" id="videoLength" min="1" max="10" value="3">
+                <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                    <span>1 min</span>
+                    <span id="lengthValue">3 min</span>
+                    <span>10 min</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="complexity">Complexity Level</label>
+                <select id="complexity">
+                    <option value="0.8">Simple (Basic edits)</option>
+                    <option value="1" selected>Moderate (Standard motion graphics)</option>
+                    <option value="1.5">Complex (Custom illustrations, advanced effects)</option>
+                    <option value="2">Very Complex (3D elements, character animation)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="timeline">Timeline</label>
+                <select id="timeline">
+                    <option value="1">Standard (2-4 weeks)</option>
+                    <option value="1.25" selected>Fast (1-2 weeks)</option>
+                    <option value="1.5">Rush (3-7 days)</option>
+                    <option value="2">Extreme Rush (24-72 hours)</option>
+                </select>
+            </div>
+            
+            <button class="btn-primary" onclick="calculatePrice()" style="width: 100%; padding: 15px; font-size: 1.1rem;">Calculate Estimated Price</button>
+            
+            <div class="result-box" id="resultBox">
+                <h4>Estimated Project Price</h4>
+                <div class="estimated-price" id="estimatedPrice">$0</div>
+                <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">This is an estimate. Final quote may vary based on specific requirements.</p>
+            </div>
+        </div>
+        
+        <h2>Tips for Communicating Your Pricing</h2>
+        <ol>
+            <li><strong>Be transparent but flexible:</strong> Clearly explain what's included in your price while being open to adjustments based on client needs.</li>
+            <li><strong>Present multiple options:</strong> Offer tiered packages (Basic, Standard, Premium) to give clients choice and upsell opportunities.</li>
+            <li><strong>Focus on value:</strong> Explain how your work will benefit the client's business, not just what tasks you'll perform.</li>
+            <li><strong>Handle objections gracefully:</strong> Be prepared to justify your rates with examples of past success and your unique skills.</li>
+            <li><strong>Get everything in writing:</strong> Use a contract that clearly outlines scope, deliverables, timeline, payment schedule, and revision policy.</li>
+        </ol>
+        
+        <h2>Conclusion</h2>
+        <p>Pricing your motion design work is both an art and a science. It requires understanding market rates, accurately assessing project scope, and confidently communicating your value. Remember that your pricing strategy will evolve as you gain experience and build your portfolio. Don't be afraid to adjust your rates annually to reflect your growing expertise and the increasing value you provide to clients.</p>
+        
+        <p>What pricing strategies have worked best for you? Share your experiences in the comments below!</p>
+    </article>
+
+    <!-- Blog Navigation -->
+    <div class="blog-navigation">
+        <a href="blog-post-camera-review.html" class="nav-btn">
+            <i class="fas fa-arrow-left"></i> Previous Post: Camera Gear Review
+        </a>
+        <a href="blog.html" class="nav-btn">
+            <i class="fas fa-list"></i> All Blog Posts
+        </a>
+        <a href="blog-post-after-effects.html" class="nav-btn">
+            Next Post: After Effects Tips <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/logo.svg" alt="Motivoition Logo">
+                    <span>Motivoition</span>
+                </a>
+                <p>Creating motion that moves people. Professional video editing and motion design services.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-vimeo"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="services.html">Video Editing</a></li>
+                    <li><a href="services.html">Motion Graphics</a></li>
+                    <li><a href="services.html">Color Grading</a></li>
+                    <li><a href="services.html">Visual Effects</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> hello@motivoition.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Los Angeles, CA</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Motivoition. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Pricing Calculator
+        const videoLength = document.getElementById('videoLength');
+        const lengthValue = document.getElementById('lengthValue');
+        
+        videoLength.addEventListener('input', function() {
+            lengthValue.textContent = this.value + ' min';
+        });
+        
+        function calculatePrice() {
+            const projectType = parseInt(document.getElementById('projectType').value);
+            const lengthMultiplier = parseFloat(videoLength.value) / 3; // Base is 3 minutes
+            const complexity = parseFloat(document.getElementById('complexity').value);
+            const timeline = parseFloat(document.getElementById('timeline').value);
+            
+            // Calculate base price
+            let basePrice = projectType * lengthMultiplier * complexity * timeline;
+            
+            // Round to nearest 100
+            basePrice = Math.round(basePrice / 100) * 100;
+            
+            // Display result
+            document.getElementById('estimatedPrice').textContent = '$' + basePrice.toLocaleString();
+            document.getElementById('resultBox').style.display = 'block';
+        }
+        
+        // Initialize calculator with default values
+        window.onload = function() {
+            lengthValue.textContent = videoLength.value + ' min';
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | MotiVOItion - Motion Video Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B00;
+            --secondary: #FFB347;
+            --accent: #FDFD96;
+            --dark: #1B1B1B;
+            --card-bg: rgba(30, 30, 30, 0.8);
+        }
+
+        .services-page {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        .services-hero {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .services-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .services-hero p {
+            font-size: 1.2rem;
+            color: #B0B0B0;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 6rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 107, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 107, 0, 0.2);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .service-description {
+            color: #B0B0B0;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .service-features {
+            margin-bottom: 2rem;
+        }
+
+        .service-features h4 {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-features ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li {
+            color: #B0B0B0;
+            margin-bottom: 0.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .service-features li::before {
+            content: '▸';
+            position: absolute;
+            left: -1rem;
+            color: var(--primary);
+        }
+
+        .service-pricing {
+            margin-bottom: 1.5rem;
+        }
+
+        .price-tag {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            color: #8888a0;
+        }
+
+        .service-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-service {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-service-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-service-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 0, 0.3);
+        }
+
+        .btn-service-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-service-secondary:hover {
+            background: rgba(255, 107, 0, 0.1);
+        }
+
+        /* Service Packages */
+        .packages-section {
+            margin-bottom: 6rem;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .package-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .package-card.popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(255, 107, 0, 0.1);
+        }
+
+        .package-card.popular::after {
+            content: 'POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: var(--dark);
+            padding: 0.25rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .package-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .package-name {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .package-price {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .package-period {
+            color: #B0B0B0;
+            font-size: 0.9rem;
+        }
+
+        .package-features {
+            margin-bottom: 2rem;
+        }
+
+        .package-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: #b0b0c0;
+        }
+
+        .package-feature i {
+            color: var(--primary);
+        }
+
+        /* Workflow Section */
+        .workflow-section {
+            margin-bottom: 6rem;
+        }
+
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .workflow-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .workflow-step::after {
+            content: '→';
+            position: absolute;
+            right: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .workflow-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        .step-description {
+            color: #B0B0B0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Equipment Section */
+        .equipment-section {
+            margin-bottom: 6rem;
+        }
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .equipment-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 107, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .equipment-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .equipment-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .equipment-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .equipment-specs {
+            color: #B0B0B0;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 6rem;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 107, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: white;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 107, 0, 0.05);
+        }
+
+        .faq-toggle {
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #B0B0B0;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* Call to Action */
+        .cta-section {
+            text-align: center;
+            padding: 4rem;
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.1), rgba(253, 253, 150, 0.1));
+            border-radius: 20px;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(255, 107, 0, 0.2);
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            color: #B0B0B0;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        @media (max-width: 992px) {
+            .workflow-step::after {
+                display: none;
+            }
+
+            .package-card.popular {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-cta {
+                flex-direction: column;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="dark-mode">
+    <!-- Animated Background -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="assets/images/logo%202.svg" alt="MotiVOItion Logo" style="width: 40px; height: 40px;">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-motion">MOTI</span>
+                    <span class="logo-voition">VOITION</span>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link" data-text="HOME">
+                            <i class="fas fa-home"></i>
+                            <span>HOME</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link" data-text="ABOUT">
+                            <i class="fas fa-user-astronaut"></i>
+                            <span>ABOUT</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="services.html" class="nav-link active" data-text="SERVICES">
+                            <i class="fas fa-cogs"></i>
+                            <span>SERVICES</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="portfolio.html" class="nav-link" data-text="PORTFOLIO">
+                            <i class="fas fa-film"></i>
+                            <span>PORTFOLIO</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link" data-text="CONTACT">
+                            <i class="fas fa-satellite-dish"></i>
+                            <span>CONTACT</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html" class="nav-link" data-text="BLOG">
+                            <i class="fas fa-blog"></i>
+                            <span>BLOG</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" id="menuToggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Services Page Content -->
+    <section class="services-page">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="services-hero">
+                <h1 id="dynamic-services-hero-title">Premium Motion Video Services</h1>
+                <p id="dynamic-services-hero-subtitle">Transforming your vision into compelling motion stories with
+                    cutting-edge technology and creative
+                    expertise.</p>
+                <a href="#contact-form" class="btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    Get Started Today
+                </a>
+            </div>
+
+            <!-- Main Services Grid -->
+            <div class="services-grid">
+                <!-- Service 1: Video Production -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="service-title" id="dynamic-service-title-0">Professional Video Production</h3>
+                    <p class="service-description" id="dynamic-service-desc-0">
+                        End-to-end video production services from concept development to final delivery.
+                        We handle everything from scripting to shooting and final edits.
+                    </p>
+
+                    <div class="service-features">
+                        <h4><i class="fas fa-check-circle"></i> Features Included:</h4>
+                        <ul>
+                            <li>4K/8K cinematic filming</li>
+                            <li>Professional lighting setup</li>
+                            <li>Multi-camera shooting</li>
+                            <li>Location scouting</li>
+                            <li>Talent coordination</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-pricing">
+                        <div class="price-tag" id="dynamic-service-price-0">Starting from $1,500</div>
+                        <div class="price-note" id="dynamic-service-price-note-0">Custom quotes based on project scope
+                        </div>
+                    </div>
+
+                    <div class="service-cta">
+                        <a href="contact.html?service=production" class="btn-service btn-service-primary">
+                            <i class="fas fa-calendar-check"></i>
+                            Book Consultation
+                        </a>
+                        <a href="portfolio.html#production" class="btn-service btn-service-secondary">
+                            <i class="fas fa-play"></i>
+                            View Examples
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 2: Video Editing -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3 class="service-title" id="dynamic-service-title-1">Advanced Video Editing</h3>
+                    <p class="service-description" id="dynamic-service-desc-1">
+                        Professional post-production services including editing, color grading,
+                        sound design, and visual effects to elevate your raw footage.
+                    </p>
+
+                    <div class="service-features">
+                        <h4><i class="fas fa-check-circle"></i> Features Included:</h4>
+                        <ul>
+                            <li>Professional color grading</li>
+                            <li>Sound mixing & design</li>
+                            <li>Motion graphics integration</li>
+                            <li>Visual effects (VFX)</li>
+                            <li>Multiple format delivery</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-pricing">
+                        <div class="price-tag" id="dynamic-service-price-1">$75/hour</div>
+                        <div class="price-note" id="dynamic-service-price-note-1">Package discounts available</div>
+                    </div>
+
+                    <div class="service-cta">
+                        <a href="contact.html?service=editing" class="btn-service btn-service-primary">
+                            <i class="fas fa-calendar-check"></i>
+                            Get Quote
+                        </a>
+                        <a href="portfolio.html#editing" class="btn-service btn-service-secondary">
+                            <i class="fas fa-play"></i>
+                            See Results
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 3: Motion Graphics -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="service-title" id="dynamic-service-title-2">Motion Graphics & Animation</h3>
+                    <p class="service-description" id="dynamic-service-desc-2">
+                        Create stunning animated graphics, explainer videos, and visual effects
+                        that captivate your audience and enhance brand storytelling.
+                    </p>
+
+                    <div class="service-features">
+                        <h4><i class="fas fa-check-circle"></i> Features Included:</h4>
+                        <ul>
+                            <li>2D/3D animation</li>
+                            <li>Explainer video production</li>
+                            <li>Infographic animation</li>
+                            <li>Logo animation</li>
+                            <li>Visual effects creation</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-pricing">
+                        <div class="price-tag" id="dynamic-service-price-2">Starting from $800</div>
+                        <div class="price-note" id="dynamic-service-price-note-2">Per project basis</div>
+                    </div>
+
+                    <div class="service-cta">
+                        <a href="contact.html?service=motion-graphics" class="btn-service btn-service-primary">
+                            <i class="fas fa-calendar-check"></i>
+                            Start Project
+                        </a>
+                        <a href="portfolio.html#motion-graphics" class="btn-service btn-service-secondary">
+                            <i class="fas fa-play"></i>
+                            View Work
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 4: Cloud Upload System -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3 class="service-title" id="dynamic-service-title-3">Cloud Video Upload System</h3>
+                    <p class="service-description" id="dynamic-service-desc-3">
+                        Our proprietary upload system allows direct integration with GitHub for
+                        seamless video management, sharing, and collaboration.
+                    </p>
+
+                    <div class="service-features">
+                        <h4><i class="fas fa-check-circle"></i> Features Included:</h4>
+                        <ul>
+                            <li>Direct GitHub integration</li>
+                            <li>Auto-compression & optimization</li>
+                            <li>Cloud storage management</li>
+                            <li>Team collaboration tools</li>
+                            <li>Version control for videos</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-pricing">
+                        <div class="price-tag" id="dynamic-service-price-3">$49/month</div>
+                        <div class="price-note" id="dynamic-service-price-note-3">Enterprise plans available</div>
+                    </div>
+
+                    <div class="service-cta">
+                        <a href="upload.html" class="btn-service btn-service-primary">
+                            <i class="fas fa-rocket"></i>
+                            Try Upload System
+                        </a>
+                        <a href="contact.html?service=upload" class="btn-service btn-service-secondary">
+                            <i class="fas fa-info-circle"></i>
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 5: Video SEO & Distribution -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="service-title" id="dynamic-service-title-4">Video SEO & Distribution</h3>
+                    <p class="service-description" id="dynamic-service-desc-4">
+                        Maximize your video's reach with strategic SEO optimization and
+                        multi-platform distribution to YouTube, Vimeo, and social media.
+                    </p>
+
+                    <div class="service-features">
+                        <h4><i class="fas fa-check-circle"></i> Features Included:</h4>
+                        <ul>
+                            <li>YouTube optimization</li>
+                            <li>Social media formatting</li>
+                            <li>SEO metadata optimization</li>
+                            <li>Analytics tracking setup</li>
+                            <li>Multi-platform distribution</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-pricing">
+                        <div class="price-tag" id="dynamic-service-price-4">$299/month</div>
+                        <div class="price-note" id="dynamic-service-price-note-4">Management service</div>
+                    </div>
+
+                    <div class="service-cta">
+                        <a href="contact.html?service=seo" class="btn-service btn-service-primary">
+                            <i class="fas fa-chart-line"></i>
+                            Boost Visibility
+                        </a>
+                        <a href="blog.html#video-seo" class="btn-service btn-service-secondary">
+                            <i class="fas fa-book"></i>
+                            Read Guide
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 6: Training & Workshops -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="service-title" id="dynamic-service-title-5">Video Production Training</h3>
+                    <p class="service-description" id="dynamic-service-desc-5">
+                        Learn professional video production techniques through personalized
+                        training sessions and comprehensive workshops.
+                    </p>
+
+                    <div class="service-features">
+                        <h4><i class="fas fa-check-circle"></i> Features Included:</h4>
+                        <ul>
+                            <li>One-on-one coaching</li>
+                            <li>Group workshops</li>
+                            <li>Software training (Adobe Suite)</li>
+                            <li>Equipment operation</li>
+                            <li>Project feedback sessions</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-pricing">
+                        <div class="price-tag" id="dynamic-service-price-5">$120/session</div>
+                        <div class="price-note" id="dynamic-service-price-note-5">Group rates available</div>
+                    </div>
+
+                    <div class="service-pricing">
+                        <div class="price-tag">$120/hour</div>
+                        <div class="price-note">Group rates available</div>
+                    </div>
+
+                    <div class="service-cta">
+                        <a href="contact.html?service=training" class="btn-service btn-service-primary">
+                            <i class="fas fa-graduation-cap"></i>
+                            Book Training
+                        </a>
+                        <a href="blog.html#tutorials" class="btn-service btn-service-secondary">
+                            <i class="fas fa-play-circle"></i>
+                            Free Tutorials
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Packages -->
+            <div class="packages-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-prefix">#</span>
+                        SERVICE PACKAGES
+                    </h2>
+                    <p class="section-subtitle" id="dynamic-packages-subtitle">Choose the perfect package for your needs
+                    </p>
+                </div>
+
+                <div class="packages-grid">
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3 class="package-name" id="dynamic-package-name-0">Basic</h3>
+                            <div class="package-price" id="dynamic-package-price-0">$499</div>
+                            <div class="package-period" id="dynamic-package-period-0">One-time project</div>
+                        </div>
+
+                        <div class="package-features" id="dynamic-package-features-0">
+                            <div class="package-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Up to 3-minute video</span>
+                            </div>
+                            <div class="package-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Basic editing & color correction</span>
+                            </div>
+                            <div class="package-feature">
+                                <i class="fas fa-check"></i>
+                                <span>2 revision rounds</span>
+                            </div>
+                            <div class="package-feature">
+                                <i class="fas fa-check"></i>
+                                <span>1080p delivery</span>
+                            </div>
+                        </div>
+
+                        <a href="contact.html?package=basic" class="btn-service btn-service-primary">
+                            Choose Basic
+                        </a>
+                    </div>
+
+                    <div class="package-card popular">
+                        <div class="package-header">
+                            <h3 class="package-name" id="dynamic-package-name-1">Professional</h3>
+                            <div class="package-price" id="dynamic-package-price-1">$1,299</div>
+                            <div class="package-period" id="dynamic-package-period-1">Most popular</div>
+                        </div>
+
+                        <div class="package-features" id="dynamic-package-features-1">
+                            <div class="package-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Up to 10-minute video</span>
+                            </div>
+                            <div class="package-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Advanced editing & color grading</span>
+                            </div>
+                            <div class="package-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Motion graphics included</span>
+                            </div>
+                            <div class="package-feature">
+                                <i class="fas fa-check"></i>
+                                <span>4K delivery + social cuts</span>
+                            </div>
+                            <div class="package-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Unlimited revisions</span>
+                            </div>
+                        </div>
+
+                        <a href="contact.html?package=professional" class="btn-service btn-service-primary">
+                            Choose Professional
+                        </a>
+                    </div>
+
+                    <div class="package-card">
+                        <div class="package-header">
+                            <h3 class="package-name" id="dynamic-package-name-2">Enterprise</h3>
+                            <div class="package-price" id="dynamic-package-price-2">$2,999</div>
+                            <div class="package-period" id="dynamic-package-period-2">Full production</div>
+                        </div>
+
+                        <div class="package-features" id="dynamic-package-features-2">
+                            <div class="package-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Full production service</span>
+                            </div>
+                            <div class="package-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Script development</span>
+                            </div>
+                            <div class="package-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Professional voiceover</span>
+                            </div>
+                            <div class="package-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Multi-platform distribution</span>
+                            </div>
+                            <div class="package-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Analytics dashboard</span>
+                            </div>
+                        </div>
+
+                        <a href="contact.html?package=enterprise" class="btn-service btn-service-primary">
+                            Choose Enterprise
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workflow Process -->
+            <div class="workflow-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-prefix">&gt;</span>
+                        OUR WORKFLOW PROCESS
+                        <span class="title-suffix">&lt;</span>
+                    </h2>
+                    <p class="section-subtitle">A systematic approach to delivering exceptional results</p>
+                </div>
+
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Discovery & Consultation</h3>
+                        <p class="step-description">
+                            We start by understanding your vision, goals, and requirements
+                            through detailed discussions and creative briefings.
+                        </p>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Planning & Pre-production</h3>
+                        <p class="step-description">
+                            Scriptwriting, storyboarding, location scouting, and
+                            production planning to ensure everything is perfectly prepared.
+                        </p>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Production & Filming</h3>
+                        <p class="step-description">
+                            Professional filming with high-end equipment, proper lighting,
+                            and expert direction to capture stunning footage.
+                        </p>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Post-Production</h3>
+                        <p class="step-description">
+                            Editing, color grading, sound design, and visual effects
+                            to transform raw footage into a polished masterpiece.
+                        </p>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="step-number">5</div>
+                        <h3 class="step-title">Delivery & Distribution</h3>
+                        <p class="step-description">
+                            Final delivery in required formats, plus optimization
+                            and distribution across your chosen platforms.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Equipment Section -->
+            <div class="equipment-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-prefix">#</span>
+                        PROFESSIONAL EQUIPMENT
+                    </h2>
+                    <p class="section-subtitle">State-of-the-art gear for exceptional quality</p>
+                </div>
+
+                <div class="equipment-grid">
+                    <div class="equipment-card">
+                        <div class="equipment-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3 class="equipment-name">Sony FX6 Cinema Camera</h3>
+                        <p class="equipment-specs">
+                            4K 120fps · Full-frame sensor · Professional cinema quality
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <div class="equipment-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3 class="equipment-name">DJI Ronin Stabilizer</h3>
+                        <p class="equipment-specs">
+                            3-axis gimbal · Smooth movements · Professional stabilization
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <div class="equipment-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h3 class="equipment-name">Aputure Light Kits</h3>
+                        <p class="equipment-specs">
+                            LED lighting · Softboxes · Professional studio lighting setup
+                        </p>
+                    </div>
+
+                    <div class="equipment-card">
+                        <div class="equipment-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3 class="equipment-name">Rode Wireless Mics</h3>
+                        <p class="equipment-specs">
+                            Wireless audio · Lavalier mics · Professional sound recording
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-prefix">?</span>
+                        FREQUENTLY ASKED QUESTIONS
+                    </h2>
+                </div>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What video formats do you accept for editing?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            We accept all major video formats including MP4, MOV, AVI, and MKV.
+                            For best results, we recommend shooting in LOG format if your camera
+                            supports it. We can work with footage from smartphones, DSLRs,
+                            mirrorless cameras, and professional cinema cameras.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How long does a typical video project take?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Production timelines vary based on project complexity:
+                            <ul style="margin-top: 0.5rem;">
+                                <li>Basic editing (1-3 minute video): 3-5 business days</li>
+                                <li>Full production with filming: 2-4 weeks</li>
+                                <li>Complex animation/motion graphics: 3-6 weeks</li>
+                            </ul>
+                            Rush options are available for urgent projects.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do you offer revisions on completed work?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! We include revision rounds in all our packages:
+                            <ul style="margin-top: 0.5rem;">
+                                <li>Basic package: 2 revision rounds</li>
+                                <li>Professional package: Unlimited revisions</li>
+                                <li>Enterprise package: Unlimited revisions + priority support</li>
+                            </ul>
+                            We work closely with you until you're 100% satisfied.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can you help with video distribution and SEO?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Absolutely! Our Video SEO & Distribution service includes:
+                            <ul style="margin-top: 0.5rem;">
+                                <li>YouTube optimization (titles, descriptions, tags)</li>
+                                <li>Social media formatting for each platform</li>
+                                <li>Thumbnail design and optimization</li>
+                                <li>Analytics setup and tracking</li>
+                                <li>Multi-platform distribution strategy</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What makes your upload system unique?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Our Cloud Upload System offers several unique advantages:
+                            <ul style="margin-top: 0.5rem;">
+                                <li>Direct GitHub integration for developers</li>
+                                <li>Automatic video compression and optimization</li>
+                                <li>Secure cloud storage with version control</li>
+                                <li>Team collaboration features</li>
+                                <li>API access for custom integrations</li>
+                                <li>Real-time upload progress tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta-section">
+                <h2 class="cta-title">Ready to Bring Your Vision to Life?</h2>
+                <p class="cta-text">
+                    Contact us today for a free consultation. Let's discuss your project
+                    and create something amazing together.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn-primary" style="margin-right: 1rem;">
+                        <i class="fas fa-calendar"></i>
+                        Schedule Consultation
+                    </a>
+                    <a href="tel:+1234567890" class="btn-secondary" id="dynamic-contact-phone">
+                        <i class="fas fa-phone"></i>
+                        Call Now: (123) 456-7890
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-motion">MOTI</span>
+                        <span class="logo-voition">VOITION</span>
+                    </div>
+                    <p class="footer-tagline">
+                        Where motion meets emotion in every frame.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Services Page Specific JavaScript
+        document.addEventListener('DOMContentLoaded', function () {
+            // FAQ functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const toggle = item.querySelector('.faq-toggle');
+
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+
+                toggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Service package highlighting
+            const urlParams = new URLSearchParams(window.location.search);
+            const packageParam = urlParams.get('package');
+
+            if (packageParam) {
+                const packageCards = document.querySelectorAll('.package-card');
+                packageCards.forEach(card => {
+                    const packageName = card.querySelector('.package-name').textContent.toLowerCase();
+                    if (packageName.includes(packageParam)) {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        card.style.animation = 'pulse 2s infinite';
+
+                        setTimeout(() => {
+                            card.style.animation = '';
+                        }, 4000);
+                    }
+                });
+            }
+
+            // Equipment card animations
+            const equipmentCards = document.querySelectorAll('.equipment-card');
+            equipmentCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+
+            // Smooth scroll for service links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Animate workflow steps on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 200);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const workflowSteps = document.querySelectorAll('.workflow-step');
+            workflowSteps.forEach(step => {
+                step.style.opacity = '0';
+                step.style.transform = 'translateY(20px)';
+                step.style.transition = 'all 0.5s ease';
+                observer.observe(step);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | MotiVOItion</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B00;
+            --secondary: #FFB347;
+            --accent: #FDFD96;
+            --dark: #1B1B1B;
+            --card-bg: rgba(30, 30, 30, 0.8);
+        }
+
+        .portfolio-page {
+            padding-top: 120px;
+        }
+
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 107, 0, 0.1);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            color: var(--text-secondary);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .video-stats {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(0, 243, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body class="dark-mode">
+    <!-- Animated Background -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="assets/images/logo%202.svg" alt="MotiVOItion Logo" style="width: 40px; height: 40px;">
+                </div>
+                <div class="logo-text">
+                    <span class="logo-motion">MOTI</span>
+                    <span class="logo-voition">VOITION</span>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link" data-text="HOME">
+                            <i class="fas fa-home"></i>
+                            <span>HOME</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link" data-text="ABOUT">
+                            <i class="fas fa-user-astronaut"></i>
+                            <span>ABOUT</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="services.html" class="nav-link" data-text="SERVICES">
+                            <i class="fas fa-cogs"></i>
+                            <span>SERVICES</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="portfolio.html" class="nav-link active" data-text="PORTFOLIO">
+                            <i class="fas fa-film"></i>
+                            <span>PORTFOLIO</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link" data-text="CONTACT">
+                            <i class="fas fa-satellite-dish"></i>
+                            <span>CONTACT</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html" class="nav-link" data-text="BLOG">
+                            <i class="fas fa-blog"></i>
+                            <span>BLOG</span>
+                            <div class="link-glow"></div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Mobile Menu -->
+            <button class="menu-toggle" id="menuToggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-page">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="section-header">
+                <h1 class="section-title">
+                    <span class="title-prefix">//</span>
+                    VIDEO PORTFOLIO
+                    <span class="title-suffix">//</span>
+                </h1>
+                <p class="section-subtitle">
+                    Explore our collection of motion video projects.
+                    Each piece tells a unique story through visual motion.
+                </p>
+            </div>
+
+            <!-- Video Stats -->
+            <div class="video-stats">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalVideos">150</div>
+                        <div class="stat-label">Total Videos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalHours">48</div>
+                        <div class="stat-label">Hours of Content</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="4kVideos">75</div>
+                        <div class="stat-label">4K Videos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="lastUpload">24</div>
+                        <div class="stat-label">Hours Ago</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-globe"></i>
+                    All Projects
+                </button>
+                <button class="filter-btn" data-filter="motion">
+                    <i class="fas fa-wind"></i>
+                    Motion Graphics
+                </button>
+                <button class="filter-btn" data-filter="cinematic">
+                    <i class="fas fa-film"></i>
+                    Cinematic
+                </button>
+                <button class="filter-btn" data-filter="timelapse">
+                    <i class="fas fa-clock"></i>
+                    Time-lapse
+                </button>
+                <button class="filter-btn" data-filter="experimental">
+                    <i class="fas fa-flask"></i>
+                    Experimental
+                </button>
+                <button class="filter-btn" data-filter="tutorial">
+                    <i class="fas fa-graduation-cap"></i>
+                    Tutorials
+                </button>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search videos by title, description, or tags...">
+                    <button class="search-btn" id="searchBtn">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="search-tags">
+                    <span class="search-tag" data-tag="4k">4K</span>
+                    <span class="search-tag" data-tag="drone">Drone</span>
+                    <span class="search-tag" data-tag="slowmo">Slow Motion</span>
+                    <span class="search-tag" data-tag="vfx">VFX</span>
+                    <span class="search-tag" data-tag="color">Color Grading</span>
+                </div>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Video cards will be loaded here -->
+                <div class="loading">
+                    <div class="loader"></div>
+                    <p>Loading portfolio videos...</p>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button class="btn-outline" id="loadMoreBtn">
+                    <i class="fas fa-plus"></i>
+                    Load More Videos
+                </button>
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No Videos Found</h3>
+                <p>Try adjusting your search or filter criteria.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle"></h3>
+                <button class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-video">
+                <video controls id="modalVideo">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="modal-info" id="modalInfo"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-motion">MOTI</span>
+                        <span class="logo-voition">VOITION</span>
+                    </div>
+                    <p class="footer-tagline" id="dynamic-footer-tagline">
+                        Where motion meets emotion in every frame.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Portfolio Page Specific JavaScript
+        document.addEventListener('DOMContentLoaded', function () {
+            // State
+            let videos = [];
+            let photos = [];
+            let currentType = 'video'; // 'video' or 'photo'
+            let currentFilter = 'all';
+            let currentSearch = '';
+            let currentPage = 1;
+            const itemsPerPage = 6;
+            let filteredItems = [];
+
+            // DOM Elements
+            const portfolioGrid = document.getElementById('portfolioGrid');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const searchTags = document.querySelectorAll('.search-tag');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const noResults = document.getElementById('noResults');
+            const videoModal = document.getElementById('videoModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalVideo = document.getElementById('modalVideo');
+            const modalInfo = document.getElementById('modalInfo');
+            const closeModal = document.querySelector('.close-modal');
+
+            // Add Tab Switcher Code
+            const sectionHeader = document.querySelector('.section-header');
+            const tabSwitcher = document.createElement('div');
+            tabSwitcher.className = 'portfolio-tabs';
+            tabSwitcher.style.cssText = 'display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;';
+            tabSwitcher.innerHTML = `
+                <button class="tab-btn active" data-type="video" style="padding: 1rem 2rem; background: var(--primary); color: white; border: none; border-radius: 50px; cursor: pointer; font-family: 'Orbitron', sans-serif; font-weight: bold;">VIDEO PORTFOLIO</button>
+                <button class="tab-btn" data-type="photo" style="padding: 1rem 2rem; background: transparent; color: #fff; border: 1px solid var(--primary); border-radius: 50px; cursor: pointer; font-family: 'Orbitron', sans-serif; font-weight: bold;">PHOTO PORTFOLIO</button>
+            `;
+            sectionHeader.after(tabSwitcher);
+
+            const tabBtns = tabSwitcher.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tabBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.style.background = 'transparent';
+                    });
+                    btn.classList.add('active');
+                    btn.style.background = 'var(--primary)';
+
+                    currentType = btn.dataset.type;
+
+                    // Update header title
+                    const titleElement = document.querySelector('.section-title');
+                    titleElement.innerHTML = `<span class="title-prefix">//</span> ${currentType.toUpperCase()} PORTFOLIO <span class="title-suffix">//</span>`;
+
+                    // Update filters for photo/video
+                    updateFiltersForType(currentType);
+
+                    currentFilter = 'all';
+                    currentPage = 1;
+                    filterItems();
+                });
+            });
+
+            function updateFiltersForType(type) {
+                const filterContainer = document.querySelector('.filter-controls');
+                if (type === 'video') {
+                    filterContainer.innerHTML = `
+                        <button class="filter-btn active" data-filter="all"><i class="fas fa-globe"></i> All Projects</button>
+                        <button class="filter-btn" data-filter="motion"><i class="fas fa-wind"></i> Motion Graphics</button>
+                        <button class="filter-btn" data-filter="commercial"><i class="fas fa-ad"></i> Commercial</button>
+                        <button class="filter-btn" data-filter="event"><i class="fas fa-calendar-alt"></i> Event</button>
+                        <button class="filter-btn" data-filter="music"><i class="fas fa-music"></i> Music Video</button>
+                        <button class="filter-btn" data-filter="documentary"><i class="fas fa-film"></i> Documentary</button>
+                        <button class="filter-btn" data-filter="other"><i class="fas fa-question-circle"></i> Other</button>
+                    `;
+                } else {
+                    // Extract unique collections
+                    const collections = [...new Set(photos.map(p => p.collection).filter(Boolean))];
+
+                    let html = `<button class="filter-btn active" data-filter="all"><i class="fas fa-globe"></i> All Photos</button>`;
+
+                    // Add Collection Buttons if exist
+                    if (collections.length > 0) {
+                        html += `<span style="color: var(--primary); font-size: 0.8rem; margin: 0 0.5rem; display: flex; align-items: center;">COLLECTIONS:</span>`;
+                        collections.forEach(c => {
+                            html += `<button class="filter-btn" data-filter="collection:${c}" style="border-color: var(--secondary);"><i class="fas fa-layer-group"></i> ${c}</button>`;
+                        });
+                        html += `<span style="color: #666; font-size: 0.8rem; margin: 0 0.5rem; display: flex; align-items: center;">|</span>`;
+                    }
+
+                    // Standard Categories
+                    html += `
+                        <button class="filter-btn" data-filter="portrait"><i class="fas fa-user"></i> Portrait</button>
+                        <button class="filter-btn" data-filter="landscape"><i class="fas fa-mountain"></i> Landscape</button>
+                        <button class="filter-btn" data-filter="event"><i class="fas fa-calendar-alt"></i> Event</button>
+                        <button class="filter-btn" data-filter="product"><i class="fas fa-box"></i> Product</button>
+                        <button class="filter-btn" data-filter="architecture"><i class="fas fa-building"></i> Architecture</button>
+                        <button class="filter-btn" data-filter="other"><i class="fas fa-question-circle"></i> Other</button>
+                    `;
+
+                    filterContainer.innerHTML = html;
+                }
+                // Re-bind listeners
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        currentFilter = this.dataset.filter;
+                        currentPage = 1;
+                        filterItems();
+                    });
+                });
+            }
+
+            // Initialize
+            async function initPortfolio() {
+                // Load Videos
+                try {
+                    const vResponse = await fetch('settings/videos.json');
+                    if (vResponse.ok) {
+                        const data = await vResponse.json();
+                        if (Array.isArray(data)) videos = data;
+                    }
+                } catch (error) {
+                    console.error('Error loading videos:', error);
+                }
+
+                // Load Photos
+                try {
+                    const pResponse = await fetch('settings/photos.json');
+                    if (pResponse.ok) {
+                        const data = await pResponse.json();
+                        if (Array.isArray(data)) photos = data;
+                    }
+                } catch (error) {
+                    console.error('Error loading photos:', error);
+                }
+
+                // Initial setup - default to video
+                setupEventListeners();
+                updateFiltersForType('video'); // Ensure correct filters load first
+                filterItems();
+                updateStats();
+            }
+
+            function filterItems() {
+                const source = currentType === 'video' ? videos : photos;
+
+                filteredItems = source.filter(item => {
+                    // Filter by Category or Collection
+                    if (currentFilter !== 'all') {
+                        if (currentFilter.startsWith('collection:')) {
+                            const targetCollection = currentFilter.replace('collection:', '');
+                            if (item.collection !== targetCollection) return false;
+                        } else {
+                            if (item.category !== currentFilter) return false;
+                        }
+                    }
+
+                    // Filter by Search
+                    if (currentSearch) {
+                        const searchFields = [
+                            item.title,
+                            item.description,
+                            item.collection || '',
+                            ...(item.tags || [])
+                        ].join(' ').toLowerCase();
+                        if (!searchFields.includes(currentSearch)) return false;
+                    }
+
+                    return true;
+                });
+
+                displayItems();
+            }
+
+            function displayItems() {
+                portfolioGrid.innerHTML = '';
+
+                if (filteredItems.length === 0) {
+                    noResults.style.display = 'block';
+                    portfolioGrid.style.display = 'none';
+                    return;
+                }
+
+                noResults.style.display = 'none';
+                portfolioGrid.style.display = 'grid';
+
+                const startIndex = 0;
+                const endIndex = currentPage * itemsPerPage;
+                const itemsToShow = filteredItems.slice(startIndex, endIndex);
+
+                itemsToShow.forEach(item => {
+                    const card = currentType === 'video' ? createVideoCard(item) : createPhotoCard(item);
+                    portfolioGrid.appendChild(card);
+                });
+
+                if (endIndex >= filteredItems.length) {
+                    loadMoreBtn.style.display = 'none';
+                } else {
+                    loadMoreBtn.style.display = 'block';
+                }
+            }
+
+            function createVideoCard(video) {
+                const card = document.createElement('div');
+                card.className = 'portfolio-item';
+                card.innerHTML = `
+                    <div class="video-thumbnail">
+                        <video src="${video.src}" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;" style="width: 100%; height: var(--grid-item-height); object-fit: cover;"></video>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">${video.title}</h3>
+                        <p class="video-description">${video.description || ''}</p>
+                        <div class="video-meta">
+                            <span class="video-date"><i class="far fa-calendar"></i> ${video.date || ''}</span>
+                        </div>
+                        <div class="video-tags">
+                            ${(video.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                        <button class="action-btn watch-btn" style="width: 100%; margin-top: 1rem;">
+                            <i class="fas fa-play"></i> Watch Now
+                        </button>
+                    </div>
+                `;
+
+                card.querySelector('video').addEventListener('click', () => openVideoModal(video));
+                card.querySelector('.watch-btn').addEventListener('click', () => openVideoModal(video));
+
+                return card;
+            }
+
+            function createPhotoCard(photo) {
+                const card = document.createElement('div');
+                card.className = 'portfolio-item';
+                card.innerHTML = `
+                    <div class="video-thumbnail">
+                        <img src="${photo.thumbnail || photo.src}" alt="${photo.title}" loading="lazy" style="height: var(--grid-item-height); object-fit: cover; width: 100%;">
+                        <div class="play-overlay">
+                            <div class="play-btn"><i class="fas fa-expand"></i></div>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">${photo.title}</h3>
+                        <p class="video-description">${photo.description || ''}</p>
+                        <div class="video-meta">
+                            <span class="video-date"><i class="far fa-calendar"></i> ${photo.date || ''}</span>
+                        </div>
+                        <div class="video-tags">
+                            ${(photo.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+
+                // For photos, click opens the full image in a simple lightbox (reusing video modal for simplicity or separate one)
+                const openPhoto = () => {
+                    modalTitle.textContent = photo.title;
+                    modalVideo.style.display = 'none';
+
+                    // Create or find photo container in modal
+                    let photoContainer = document.getElementById('modalPhoto');
+                    if (!photoContainer) {
+                        photoContainer = document.createElement('img');
+                        photoContainer.id = 'modalPhoto';
+                        photoContainer.style.maxWidth = '100%';
+                        photoContainer.style.maxHeight = '70vh';
+                        photoContainer.style.display = 'block';
+                        photoContainer.style.margin = '0 auto';
+                        modalVideo.after(photoContainer);
+                    }
+
+                    photoContainer.src = photo.src;
+                    photoContainer.style.display = 'block';
+
+                    modalInfo.innerHTML = `<p>${photo.description}</p>`;
+                    videoModal.style.display = 'flex';
+                };
+
+                card.querySelector('.play-overlay').addEventListener('click', openPhoto);
+
+                return card;
+            }
+
+            function openVideoModal(video) {
+                modalTitle.textContent = video.title;
+
+                // Hide photo if exists
+                const photo = document.getElementById('modalPhoto');
+                if (photo) photo.style.display = 'none';
+
+                modalVideo.style.display = 'block';
+                modalVideo.src = video.src;
+                modalInfo.innerHTML = `<p>${video.description}</p>`;
+                videoModal.style.display = 'flex';
+                modalVideo.play();
+            }
+
+            function setupEventListeners() {
+                // Initial filter buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        currentFilter = this.dataset.filter;
+                        currentPage = 1;
+                        filterItems();
+                    });
+                });
+
+                searchInput.addEventListener('input', function () {
+                    currentSearch = this.value.toLowerCase();
+                    currentPage = 1;
+                    filterItems();
+                });
+
+                searchBtn.addEventListener('click', function () {
+                    currentSearch = searchInput.value.toLowerCase();
+                    currentPage = 1;
+                    filterItems();
+                });
+
+                searchTags.forEach(tag => {
+                    tag.addEventListener('click', function () {
+                        searchInput.value = this.dataset.tag;
+                        currentSearch = this.dataset.tag;
+                        currentPage = 1;
+                        filterItems();
+                    });
+                });
+
+                loadMoreBtn.addEventListener('click', function () {
+                    currentPage++;
+                    displayItems();
+                });
+
+                closeModal.addEventListener('click', function () {
+                    videoModal.style.display = 'none';
+                    if (modalVideo) modalVideo.pause();
+                });
+
+                videoModal.addEventListener('click', function (e) {
+                    if (e.target === this) {
+                        videoModal.style.display = 'none';
+                        if (modalVideo) modalVideo.pause();
+                    }
+                });
+
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'Escape' && videoModal.style.display === 'flex') {
+                        videoModal.style.display = 'none';
+                        if (modalVideo) modalVideo.pause();
+                    }
+                });
+            }
+
+            function updateStats() {
+                // Keep the stats logic for videos only or update
+                document.getElementById('totalVideos').textContent = videos.length;
+                // ... rest of stats logic ...
+            }
+
+            initPortfolio();
+        });
+    </script>
+</body>
+
+</html>
